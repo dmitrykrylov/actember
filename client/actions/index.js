@@ -13,7 +13,6 @@ export function login(creds) {
     })
 
     axios.post(`${API_BASE_URL}/api/auth-token/`, creds).then(response => {
-      console.log(response)
       localStorage.setItem('token', response.data.token)
 
       dispatch({
@@ -39,7 +38,7 @@ export function addText(params) {
   return dispatch => {
       dispatch({ type: actionTypes.ADD_TEXT_REQUEST });
 
-      performRequest.performRequest(
+      performRequest(
         {url: '/api/texts/', method: 'POST', params, auth: true}).then(response => {
         dispatch({ type: actionTypes.ADD_TEXT_SUCCESS });
       }, error => {

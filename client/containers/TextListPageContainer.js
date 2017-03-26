@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { fetchTextList } from '../actions';
+import { Link } from 'react-router-dom'
 
 
 class TextListPageContainer extends React.Component {
@@ -11,7 +12,11 @@ class TextListPageContainer extends React.Component {
 
   render() {
     const texts = this.props.textList.map((text, i) => (
-      <div key={i} className="box">{text.title}</div>
+      <div key={i} className="box">
+        <Link to={`/texts/${text.id}`}>
+          <h3>{text.title}</h3>
+        </Link>
+      </div>
     ));
 
     return (

@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './client/index.js'
@@ -14,10 +15,6 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/,
-        loader: 'react-hot-loader',
-        exclude: /node_modules/ 
-      },
       { test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
@@ -33,7 +30,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin,
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
   ],
@@ -41,5 +38,6 @@ module.exports = {
     hot: true,
     contentBase: path.resolve(__dirname, './client'),  // New
     historyApiFallback: true,
+    publicPath: '/'
   },
 };
