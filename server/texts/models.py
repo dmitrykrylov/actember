@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
 from config import settings
+from words.models import UserWord
 
 
 class Text(models.Model):
@@ -8,3 +9,4 @@ class Text(models.Model):
     title = models.CharField(max_length=140)
     original = models.TextField()
     processed = JSONField(blank=True, null=True, default={})
+    words = models.ManyToManyField(UserWord, blank=True, null=True)

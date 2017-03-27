@@ -4,12 +4,12 @@ import React from 'react';
 export default class NewTextPage extends React.Component {
 
   constructor() {
-    super()
+    super();
 
     this.state = {
       title: '',
-      original: ''
-    }
+      original: '',
+    };
   }
 
   handleTitleChange = (event) => {
@@ -26,12 +26,12 @@ export default class NewTextPage extends React.Component {
     const { title, original } = this.state;
     this.props.addText({
       title,
-      original
-    })
+      original,
+    });
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div className="columns">
         <div className="column is-half is-offset-one-quarter">
@@ -40,11 +40,11 @@ export default class NewTextPage extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <div className="field">
                   <label className="label">Title</label>
-                  <input type="text" value={this.state.title} onChange={this.handleTitleChange} className="input" placeholder="Title"/>
+                  <input type="text" value={this.state.title} onChange={this.handleTitleChange} className="input" placeholder="Title" />
                 </div>
                 <div className="field">
                   <label className="label">Content</label>
-                  <textarea value={this.state.text} onChange={this.handleOriginalChange} className="textarea" placeholder="Content"/>
+                  <textarea value={this.state.text} onChange={this.handleOriginalChange} className="textarea" placeholder="Content" />
                 </div>
                 <div className="field">
                   <button type="submit" className="button">Save</button>

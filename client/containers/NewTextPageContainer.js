@@ -8,7 +8,7 @@ class NewTextPageContainer extends React.Component {
 
   render() {
     return (
-      <NewTextPage {...this.props}/>
+      <NewTextPage {...this.props} />
     );
   }
 }
@@ -17,4 +17,4 @@ class NewTextPageContainer extends React.Component {
 NewTextPageContainer.propTypes = {};
 
 
-export default connect(() => ({}), {addText})(NewTextPageContainer);
+export default connect(() => ({}), { addText })(NewTextPageContainer);

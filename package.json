@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "lint": "node_modules/eslint/bin/eslint.js .; exit 0",
+    "lintfix": "node_modules/eslint/bin/eslint.js . --fix; exit 0"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.23.0",
@@ -32,6 +35,7 @@
     "axios": "^0.15.3",
     "babel-preset-stage-2": "^6.22.0",
     "bulma": "^0.4.0",
+    "eslint": "^3.18.0",
     "history": "^4.6.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

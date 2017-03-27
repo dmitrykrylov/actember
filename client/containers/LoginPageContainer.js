@@ -1,32 +1,32 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux'
-import { login } from '../actions'
+import { connect } from 'react-redux';
+import { login } from '../actions';
 
 class App extends React.Component {
 
   constructor() {
-    super()
+    super();
 
     this.state = {
       username: '',
       password: '',
-    }
+    };
   }
 
   handleUsernameChange = (event) => {
-    this.setState({username: event.target.value})
+    this.setState({ username: event.target.value });
   }
 
   handlePasswordChange = (event) => {
-    this.setState({password: event.target.value})
-    console.log(event.target.value)
+    this.setState({ password: event.target.value });
+    console.log(event.target.value);
   }
 
   handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const { username, password } = this.state;
-    const creds = { username, password }
-    this.props.login(creds)
+    const creds = { username, password };
+    this.props.login(creds);
   }
 
   render() {
@@ -41,13 +41,13 @@ class App extends React.Component {
                 <div className="field">
                   <label className="label">Username</label>
                   <p className="control">
-                    <input className="input" type="text" placeholder="Name" onChange={this.handleUsernameChange}/>
+                    <input className="input" type="text" placeholder="Name" onChange={this.handleUsernameChange} />
                   </p>
                 </div>
                 <div className="field">
                   <label className="label">Password</label>
                   <p className="control">
-                    <input className="input" type="text" placeholder="Password" onChange={this.handlePasswordChange}/>
+                    <input className="input" type="text" placeholder="Password" onChange={this.handlePasswordChange} />
                   </p>
                 </div>
                 <div className="field is-grouped">
@@ -60,10 +60,9 @@ class App extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 
-
-export default connect(() => ({}), {login})(App)
+export default connect(() => ({}), { login })(App);

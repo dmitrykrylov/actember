@@ -19,14 +19,16 @@ def text_to_json(sender, instance, **kwargs):
             for i in items
         ]
     }
-    instance.save()
 
-    UserWord.objects.bulk_create(
+    user_words = UserWord.objects.bulk_create(
         (
             UserWord(user=instance.user, word=i['instance'])
             for i in items
             if i['instance'] is not None
         )
     )
+
+    instance.words = user_words
+    instance.save()
 
     post_save.connect(text_to_json, sender=sender)

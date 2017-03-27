@@ -7,27 +7,27 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './client/index.js'
+    './client/index.js',
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve('dist')
+    path: path.resolve('dist'),
   },
   module: {
     loaders: [
       { test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.sass$/,
-        loader: 'style-loader!css-loader!sass-loader?sourceMap'
+        loader: 'style-loader!css-loader!sass-loader?sourceMap',
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
-    ]
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -38,6 +38,6 @@ module.exports = {
     hot: true,
     contentBase: path.resolve(__dirname, './client'),  // New
     historyApiFallback: true,
-    publicPath: '/'
+    publicPath: '/',
   },
 };

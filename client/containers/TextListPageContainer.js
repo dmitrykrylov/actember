@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { fetchTextList } from '../actions';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 class TextListPageContainer extends React.Component {
@@ -38,9 +38,9 @@ class TextListPageContainer extends React.Component {
 const mapStateToProps = (state) => {
   const { textList } = state.texts;
   return {
-    textList
-  }
-}
+    textList,
+  };
+};
 
 
-export default connect(mapStateToProps, {fetchTextList})(TextListPageContainer);
+export default connect(mapStateToProps, { fetchTextList })(TextListPageContainer);

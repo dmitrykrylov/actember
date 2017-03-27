@@ -1,11 +1,32 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { fetchWordList } from '../actions';
 
 
-class WordList extends React.Component {
+class WordListPageContainer extends React.Component {
+
+  componentWillMount() {
+    this.props.fetchWordList();
+  }
 
   render() {
+    const words = this.props.wordList.map((word, i) => (
+      <div key={i} className="box">
+        <strong>{word.word.lemma}</strong> - <span>{word.word.description}</span>
+      </div>
+    ));
+
     return (
-      <div>Words</div>
+      <div className="columns">
+        <div className="column is-4">
+          <div className="card">
+            <div className="card-content">Filters</div>
+          </div>
+        </div>
+        <div className="column is-8">
+          <div>{words}</div>
+        </div>
+      </div>
     );
   }
 }
@@ -14,9 +35,9 @@ class WordList extends React.Component {
 const mapStateToProps = (state) => {
   const { wordList } = state.words;
   return {
-    wordList
-  }
-}
+    wordList,
+  };
+};
 
 
-export default WordList;
+export default connect(mapStateToProps, { fetchWordList })(WordListPageContainer);
