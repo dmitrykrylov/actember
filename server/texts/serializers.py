@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from .models import Text
+from words.serializers import UserWordSerializer
 
 
 class TextSerializer(serializers.ModelSerializer):
-    # processed = serializers.JSONField(read_only=True)
 
     class Meta:
         model = Text

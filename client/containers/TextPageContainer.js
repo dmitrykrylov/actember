@@ -10,22 +10,30 @@ class TextPageContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props.text)
-
     const { text } = this.props
+    
+    if (!text.processed) { return <div/> }
+
+    const tr = text.processed.strings.map((item, i) => {
+      if (item.s === String.fromCharCode(10)) {
+        return <br key={i} />
+      } else if (item.id) {
+        return <strong onMouseEnter={(s) => console.log(item.id)} key={i}>{item.s}</strong>
+      }
+      return <span key={i}>{item.s}</span>
+    })
 
     return (
+      <div className="content">
         <div>
-        { 
-          text &&
-          <div>
-            <h4>{text.title}</h4>
-            <div>{text.original}</div>
-          </div>
-        }
+          <h2>{text.title}</h2>
+          <div id="f">{tr}</div>
         </div>
+      </div>
     );
+
   }
+
 }
 
 

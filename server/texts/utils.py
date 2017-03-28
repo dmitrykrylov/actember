@@ -17,8 +17,12 @@ def process_text(text):
     for item in split_text(text):
         if item.isalpha():
             try:
-                word = Word.objects.get(lemma=wnl.lemmatize(item).upper())
+                # Can return more than one word?
+                word = Word.objects.filter(
+                    lemma=wnl.lemmatize(item).upper())[0]
             except Word.DoesNotExist:
+                word = None
+            except IndexError:
                 word = None
 
             yield {
@@ -27,7 +31,10 @@ def process_text(text):
             }
 
         else:
-            yield {
-                's': item,
-                'instance': None
-            }
+            # Extract \n from strings.
+            for subitem in list(chr(10).join(item.split(chr(10)))):
+                yield {
+                    's': subitem,
+                    'instance': None
+                }
+            print('===')
