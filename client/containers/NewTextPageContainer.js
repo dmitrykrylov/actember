@@ -8,6 +8,7 @@ class NewTextPageContainer extends React.Component {
 
   render() {
     return (
+      
       <NewTextPage {...this.props} />
     );
   }

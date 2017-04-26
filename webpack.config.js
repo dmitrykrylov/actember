@@ -20,12 +20,9 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.sass$/,
-        loader: 'style-loader!css-loader!sass-loader?sourceMap',
-      },
-      {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+        exclude: /node_modules/,
       },
     ],
   },

@@ -9,9 +9,28 @@ import NewTextPageContainer from './NewTextPageContainer';
 import WordListPageContainer from './WordListPageContainer';
 import TextPageContainer from './TextPageContainer';
 import LoginPageContainer from './LoginPageContainer';
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Container } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
 
-import '../../node_modules/bulma/bulma.sass';
+const Nav = withRouter(({ history}) => (
+  <Menu pointing secondary size='large'>
+    <Menu.Menu position='right'>
+      <Menu.Item name='texts' onClick={() => history.push('/texts')}>
+        Texts
+      </Menu.Item>
+      <Menu.Item name='texts-new'  onClick={() => history.push('/texts/new')}>
+         New Text
+      </Menu.Item>
+      <Menu.Item name='words' onClick={() => history.push('/words')}>
+        Words
+      </Menu.Item>
+      <Menu.Item name='login' onClick={() => history.push('/login')}>
+        Logout
+      </Menu.Item>
+    </Menu.Menu>
+  </Menu>
+))
 
 
 class App extends React.Component {
@@ -20,27 +39,17 @@ class App extends React.Component {
 
     return (
       <div>
-        <nav className="nav has-shadow">
-          <div className="container">
-            <div className="nav-right nav-menu">
-              <Link to="/texts" className="nav-item" onClick={() => store.dispatch(push('/texts'))}>Texts</Link>
-              <Link to="/texts/new" className="nav-item" onClick={() => store.dispatch(push('/words'))}>New Text</Link>
-              <Link to="/words" className="nav-item" onClick={() => store.dispatch(push('/words'))}>Words</Link>
-              <Link to="/login" className="nav-item" onClick={() => store.dispatch(push('/login'))}>Logout</Link>
-            </div>
-          </div>
-        </nav>
-        <div className="container">
-          <div className="column">
-
+        <Nav/>
+        <Segment basic>
+          <Container>
             <Route exact path="/" component={TextListPageContainer} />
             <Route path="/login" component={LoginPageContainer} />
             <Route exact path="/texts" component={TextListPageContainer} />
+            <Route exact path="/texts/new" component={NewTextPageContainer} />
             <Route path="/texts/:id" component={TextPageContainer} />
-            <Route path="/texts/new" component={NewTextPageContainer} />
             <Route path="/words" component={WordListPageContainer} />
-          </div>
-        </div>
+          </Container>
+        </Segment>
       </div>
     );
   }

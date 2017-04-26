@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchWordList } from '../actions';
+import { Table } from 'semantic-ui-react'
 
 
 class WordListPageContainer extends React.Component {
@@ -11,22 +12,24 @@ class WordListPageContainer extends React.Component {
 
   render() {
     const words = this.props.wordList.map((word, i) => (
-      <div key={i} className="box">
-        <strong>{word.word.lemma}</strong> - <span>{word.word.description}</span>
-      </div>
+      <Table.Row>
+         <Table.Cell>{word && word.lemma}</Table.Cell>
+         <Table.Cell>{word && word.description}</Table.Cell>
+      </Table.Row>
     ));
 
     return (
-      <div className="columns">
-        <div className="column is-4">
-          <div className="card">
-            <div className="card-content">Filters</div>
-          </div>
-        </div>
-        <div className="column is-8">
-          <div>{words}</div>
-        </div>
-      </div>
+      <Table basic="very">
+        <Table.Header>
+          <Table.Row>
+             <Table.HeaderCell>Word</Table.HeaderCell>
+             <Table.HeaderCell>Description</Table.HeaderCell>
+           </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {words}
+        </Table.Body>
+      </Table>
     );
   }
 }

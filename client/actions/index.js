@@ -88,3 +88,19 @@ export function fetchWordList() {
   };
 }
 
+
+
+export function fetchWord(id) {
+  console.log('aaa')
+  return (dispatch) => {
+    dispatch({ type: actionTypes.FETCH_WORD_REQUEST });
+
+    performRequest(
+        { url: `/api/words/${id}/`, method: 'GET', auth: true }).then((response) => {
+          dispatch({ type: actionTypes.FETCH_WORD_SUCCESS, word: response.data });
+        }, (error) => {
+          dispatch({ type: actionTypes.FETCH_WORD_FAILURE });
+        });
+  };
+}
+

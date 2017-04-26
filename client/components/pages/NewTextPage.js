@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {  Grid, Button, Checkbox, Form } from 'semantic-ui-react'
 
 export default class NewTextPage extends React.Component {
 
@@ -31,29 +31,24 @@ export default class NewTextPage extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
-      <div className="columns">
-        <div className="column is-half is-offset-one-quarter">
-          <div className="card">
-            <div className="card-content">
-              <form onSubmit={this.handleSubmit}>
-                <div className="field">
-                  <label className="label">Title</label>
-                  <input type="text" value={this.state.title} onChange={this.handleTitleChange} className="input" placeholder="Title" />
-                </div>
-                <div className="field">
-                  <label className="label">Content</label>
-                  <textarea value={this.state.text} onChange={this.handleOriginalChange} className="textarea" placeholder="Content" />
-                </div>
-                <div className="field">
-                  <button type="submit" className="button">Save</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+    <Grid>
+      <Grid.Row>
+        <Grid.Column width={8}>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label>Title</label>
+              <input placeholder='Title' />
+            </Form.Field>
+            <Form.Field>
+              <label>Content</label>
+              <textarea placeholder='Content' />
+            </Form.Field>
+            <Button type='submit'>Save</Button>
+          </Form>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
     );
   }
 }

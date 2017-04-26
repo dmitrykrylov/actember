@@ -20,11 +20,12 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 
 from texts.viewsets import TextViewSet
-from words.viewsets import WordViewSet
+from words.viewsets import WordViewSet, UserWordViewSet
 
 
 router = DefaultRouter()
 router.register(r'texts', TextViewSet)
+router.register(r'words/my', UserWordViewSet)
 router.register(r'words', WordViewSet)
 
 
