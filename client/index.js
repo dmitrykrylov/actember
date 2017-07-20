@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import createHistory from 'history/createBrowserHistory';
 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';

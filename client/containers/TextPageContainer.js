@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Header, Popup } from 'semantic-ui-react';
-import { fetchText, fetchWord } from '../actions';
+import { Header, Popup, Menu } from 'semantic-ui-react';
+import { fetchText } from '../actions/texts';
+import { fetchWord } from '../actions/words';
 
 
 class TextPageContainer extends React.Component {
@@ -9,6 +10,7 @@ class TextPageContainer extends React.Component {
     super(props);
 
     this.handlePopupOpen = this.handlePopupOpen.bind(this);
+    this.handleItemClick = this.handleItemClick.bind(this);
   }
 
   componentWillMount() {
@@ -21,10 +23,15 @@ class TextPageContainer extends React.Component {
     }
   }
 
+  handleItemClick() {
+
+  }
+
   render() {
     const { text } = this.props;
     
     if (!text.processed) { return <div />; }
+
 
     const tr = text.processed.strings.map((item, i) => {
       if (item.s === String.fromCharCode(10)) {
@@ -39,8 +46,8 @@ class TextPageContainer extends React.Component {
             position='bottom center'
             header={item.s}
             content={isWordFetched && this.props.cachedWords[item.id].description}
-          /> 
-        )
+          />
+        );
       }
       return <span key={i}>{item.s}</span>
     });
@@ -48,6 +55,10 @@ class TextPageContainer extends React.Component {
     return (
       <div>
         <Header as='h2'>{text.title}</Header>
+        <Menu secondary>
+          <Menu.Item name='Read Text' active={true} onClick={this.handleItemClick} />
+          <Menu.Item name='Study Words' active={false} onClick={this.handleItemClick} />
+        </Menu>
         <div id="f">{tr}</div>
       </div>
     );

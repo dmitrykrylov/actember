@@ -33,18 +33,18 @@ export default class NewTextPage extends React.Component {
   render() {
     return (
     <Grid>
-      <Grid.Row>
+      <Grid.Row centered>
         <Grid.Column width={8}>
           <Form onSubmit={this.handleSubmit}>
             <Form.Field>
               <label>Title</label>
-              <input placeholder='Title' />
+              <input placeholder="Title" />
             </Form.Field>
             <Form.Field>
               <label>Content</label>
-              <textarea placeholder='Content' />
+              <textarea placeholder="Content" />
             </Form.Field>
-            <Button type='submit'>Save</Button>
+            <Button primary type="submit">Save</Button>
           </Form>
         </Grid.Column>
       </Grid.Row>

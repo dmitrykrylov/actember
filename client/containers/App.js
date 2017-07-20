@@ -9,23 +9,24 @@ import NewTextPageContainer from './NewTextPageContainer';
 import WordListPageContainer from './WordListPageContainer';
 import TextPageContainer from './TextPageContainer';
 import LoginPageContainer from './LoginPageContainer';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Container } from 'semantic-ui-react'
-import { withRouter } from 'react-router-dom'
+import RegistrationPageContainer from './RegistrationPageContainer';
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Container } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
 
 
 const Nav = withRouter(({ history}) => (
-  <Menu pointing secondary size='large'>
-    <Menu.Menu position='right'>
-      <Menu.Item name='texts' onClick={() => history.push('/texts')}>
+  <Menu pointing secondary size="large">
+    <Menu.Menu position="right">
+      <Menu.Item name="texts" onClick={() => history.push('/texts')}>
         Texts
       </Menu.Item>
-      <Menu.Item name='texts-new'  onClick={() => history.push('/texts/new')}>
+      <Menu.Item name="texts-new" onClick={() => history.push('/texts/new')}>
          New Text
       </Menu.Item>
-      <Menu.Item name='words' onClick={() => history.push('/words')}>
+      <Menu.Item name="words" onClick={() => history.push('/words')}>
         Words
       </Menu.Item>
-      <Menu.Item name='login' onClick={() => history.push('/login')}>
+      <Menu.Item name="login" onClick={() => history.push('/login')}>
         Logout
       </Menu.Item>
     </Menu.Menu>
@@ -39,15 +40,16 @@ class App extends React.Component {
 
     return (
       <div>
-        <Nav/>
+        <Nav />
         <Segment basic>
           <Container>
             <Route exact path="/" component={TextListPageContainer} />
             <Route path="/login" component={LoginPageContainer} />
             <Route exact path="/texts" component={TextListPageContainer} />
             <Route exact path="/texts/new" component={NewTextPageContainer} />
-            <Route path="/texts/:id" component={TextPageContainer} />
-            <Route path="/words" component={WordListPageContainer} />
+            <Route exact path="/texts/:id" component={TextPageContainer} />
+            <Route exact path="/words" component={WordListPageContainer} />
+            <Route exact path="/register" component={RegistrationPageContainer} />
           </Container>
         </Segment>
       </div>

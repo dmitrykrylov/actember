@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchTextList } from '../actions';
+import { fetchTextList } from '../actions/texts';
 import { Link } from 'react-router-dom';
 
 

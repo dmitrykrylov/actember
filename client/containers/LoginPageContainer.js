@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../actions';
+import { login } from '../actions/auth';
+import { Header, Input, Button, Form, Grid, Segment } from 'semantic-ui-react';
+import { push } from 'react-router-redux';
+
 
 class App extends React.Component {
 
@@ -33,36 +36,31 @@ class App extends React.Component {
     const { isAuthenticated } = this.props;
 
     return (
-      <div className="columns">
-        <div className="column is-half is-offset-one-quarter">
-          <div className="card">
-            <div className="card-content">
-              <form onSubmit={this.handleSubmit}>
-                <div className="field">
-                  <label className="label">Username</label>
-                  <p className="control">
-                    <input className="input" type="text" placeholder="Name" onChange={this.handleUsernameChange} />
-                  </p>
-                </div>
-                <div className="field">
-                  <label className="label">Password</label>
-                  <p className="control">
-                    <input className="input" type="text" placeholder="Password" onChange={this.handlePasswordChange} />
-                  </p>
-                </div>
-                <div className="field is-grouped">
-                  <p className="control">
-                    <button className="button is-primary">Login</button>
-                  </p>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Grid >
+        <Grid.Row verticalAlign='middle' centered>
+          <Grid.Column width={6}>
+          
+            <Header size="huge">Log In</Header>
+            <form onSubmit={this.handleSubmit}>
+              <Form>
+              <Form.Field>
+                <label>Username</label>
+                <Input type="text" placeholder="Username" onChange={this.handleUsernameChange} />
+              </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <Input type="password" placeholder="Password" onChange={this.handlePasswordChange} />
+              </Form.Field>
+                <Button onClick={() => { this.props.push('/register'); }}>Register</Button>
+                <Button primary type="submit">Login</Button>
+              </Form>
+            </form>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }
 
 
-export default connect(() => ({}), { login })(App);
+export default connect(() => ({}), { login, push })(App);

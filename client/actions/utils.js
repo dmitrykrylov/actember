@@ -13,7 +13,7 @@ export const performRequest = ({ method, url, params, auth }) => {
   };
   if (auth) {
     config.headers = {
-      Authorization: `Token ${localStorage.token}`,
+      Authorization: `JWT ${localStorage.getItem('token')}`,
     };
   }
 

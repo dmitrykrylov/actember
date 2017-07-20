@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import NewTextPage from '../components/pages/NewTextPage';
-import { addText } from '../actions';
+import { addText } from '../actions/texts';
 
 
 class NewTextPageContainer extends React.Component {
