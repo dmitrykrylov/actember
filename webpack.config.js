@@ -20,11 +20,12 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.(css|scss)$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
         exclude: /node_modules/,
       },
     ],
+    // loader: 'url-loader?limit=100000',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
