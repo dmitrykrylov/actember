@@ -30,4 +30,33 @@ export function login(creds) {
       });
     });
   };
-};
+}
+
+export function logout(creds) {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.LOGOUT_REQUEST,
+      isFetching: true,
+      isAuthenticated: false,
+      creds,
+    });
+
+    axios.post(`${API_BASE_URL}/logout/`, creds).then((response) => {
+      localStorage.removeItem('token', response.data.token);
+
+      dispatch({
+        type: actionTypes.LOGOUT_SUCCESS,
+        isFetching: false,
+        isAuthenticated: true,
+        token: response.token,
+      });
+    }, (error) => {
+      dispatch({
+        type: actionTypes.LOGOUT_FAILURE,
+        isFetching: false,
+        isAuthenticated: false,
+        error,
+      });
+    });
+  };
+}

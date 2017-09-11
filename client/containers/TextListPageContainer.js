@@ -23,7 +23,6 @@ class TextListPageContainer extends React.Component {
       <div className="columns">
         <div className="column is-4">
           <div className="card">
-            <div className="card-content">Filters</div>
           </div>
         </div>
         <div className="column is-8">

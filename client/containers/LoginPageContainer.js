@@ -36,27 +36,24 @@ class App extends React.Component {
     const { isAuthenticated } = this.props;
 
     return (
-      <Grid >
-        <Grid.Row verticalAlign='middle' centered>
-          <Grid.Column width={6}>
-          
-            <Header size="huge">Log In</Header>
-            <form onSubmit={this.handleSubmit}>
-              <Form>
-              <Form.Field>
-                <label>Username</label>
-                <Input type="text" placeholder="Username" onChange={this.handleUsernameChange} />
-              </Form.Field>
-              <Form.Field>
-                <label>Password</label>
-                <Input type="password" placeholder="Password" onChange={this.handlePasswordChange} />
-              </Form.Field>
-                <Button onClick={() => { this.props.push('/register'); }}>Register</Button>
-                <Button primary type="submit">Login</Button>
-              </Form>
-            </form>
-          </Grid.Column>
-        </Grid.Row>
+      <Grid verticalAlign="middle" centered style={{ height: '100%' }}>
+        <Grid.Column width={6} style={{ maxWidth: 450 }}>
+          <Header size="huge">Log In</Header>
+          <Segment>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label>Username</label>
+              <Input type="text" placeholder="Username" onChange={this.handleUsernameChange} />
+            </Form.Field>
+            <Form.Field>
+              <label>Password</label>
+              <Input type="password" placeholder="Password" onChange={this.handlePasswordChange} />
+            </Form.Field>
+            <Button type="button" onClick={() => { this.props.push('/register'); }}>Register</Button>
+            <Button primary type="submit">Login</Button>
+          </Form>
+          </Segment>
+        </Grid.Column>
       </Grid>
     );
   }
