@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
+import callAPIMiddleware from './middlewares/callApi';
 import rootReducer from './reducers';
 import App from './containers/App';
 
@@ -22,7 +22,7 @@ const composeEnhancers = composeWithDevTools({
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk, routerMiddleware(history))),
+  composeEnhancers(applyMiddleware(thunk, callAPIMiddleware, routerMiddleware(history))),
 );
 
 

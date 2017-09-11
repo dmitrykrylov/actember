@@ -17,5 +17,5 @@ export const performRequest = ({ method, url, params, auth }) => {
     };
   }
 
-  return axios.request(config);
+  return axios.request(config)
 };
