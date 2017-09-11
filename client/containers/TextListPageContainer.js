@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchTextList } from '../actions/texts';
+import { Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -12,23 +13,26 @@ class TextListPageContainer extends React.Component {
 
   render() {
     const texts = this.props.textList.map((text, i) => (
-      <div key={i} className="box">
-        <Link to={`/texts/${text.id}`}>
-          <h3>{text.title}</h3>
-        </Link>
-      </div>
+      <Table.Row key={i}>
+        <Table.Cell>
+          <Link to={`/texts/${text.id}`}><strong>{text.title}</strong></Link>
+        </Table.Cell>
+        <Table.Cell textAlign="center">{text.words.length}</Table.Cell>
+      </Table.Row>
     ));
 
     return (
-      <div className="columns">
-        <div className="column is-4">
-          <div className="card">
-          </div>
-        </div>
-        <div className="column is-8">
-          <div>{texts}</div>
-        </div>
-      </div>
+      <Table className="columns">
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Title</Table.HeaderCell>
+            <Table.HeaderCell textAlign="center">Total words</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {texts}
+        </Table.Body>
+      </Table>
     );
   }
 }
