@@ -6,25 +6,27 @@ import createHistory from 'history/createBrowserHistory';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
 import App from './containers/App';
 
 
-const logger = createLogger();
-
 const history = createHistory();
+
+const composeEnhancers = composeWithDevTools({
+  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+});
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk, logger, routerMiddleware(history)),
+  composeEnhancers(applyMiddleware(thunk, routerMiddleware(history))),
 );
 
 
-const render = (Component) => {
+const render = () => {
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>

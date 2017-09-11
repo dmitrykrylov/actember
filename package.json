@@ -2,7 +2,7 @@
   "name": "actember-frontend",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "client/index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "lint": "node_modules/eslint/bin/eslint.js .; exit 0",
@@ -27,7 +27,7 @@
     "node-sass": "^4.5.0",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.14.1",
-    "webpack": "^2.2.1",
+    "webpack": "^3.5.6",
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
@@ -44,14 +44,16 @@
     "react-icheck": "^0.3.8",
     "react-redux": "^5.0.3",
     "react-router": "^4.1.2",
+    "react-router-dom": "^4.0.0",
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.6.0",
-    "redux-form": "^7.0.1",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.0.4",
     "redux-logger": "^2.8.2",
     "redux-saga": "^0.14.3",
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.11",
-    "semantic-ui-react": "^0.67.2",
-    "react-router-dom": "^4.0.0"
-  }
+    "semantic-ui-react": "^0.67.2"
+  },
+  "repository": "git@github.com:dmitrykrylov/actember.git"
 }
