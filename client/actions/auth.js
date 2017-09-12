@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as actionTypes from '../constants/ActionTypes';
 import { API_BASE_URL } from '../config';
+import { push } from 'react-router-redux';
 
 
 export function login(creds) {
@@ -21,6 +22,7 @@ export function login(creds) {
         isAuthenticated: true,
         token: response.token,
       });
+      dispatch(push('/'));
     }, (error) => {
       dispatch({
         type: actionTypes.LOGIN_FAILURE,
@@ -40,6 +42,7 @@ export function logout(creds) {
       isAuthenticated: false,
       creds,
     });
+    dispatch(push('/login'));
 
     axios.post(`${API_BASE_URL}/logout/`, creds).then((response) => {
       localStorage.removeItem('token', response.data.token);
