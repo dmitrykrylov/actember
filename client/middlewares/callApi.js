@@ -12,7 +12,10 @@ const callAPI = ({ dispatch, getState }) => next => (action) => {
     options = {},
   } = action;
 
-  options.headers = { Authorization: `JWT ${localStorage.getItem('token')}` };
+  options.headers = {
+    Authorization: `JWT ${localStorage.getItem('token')}`,
+    'Content-Type': 'application/json',
+  };
 
   if (!url) {
     return next(action);
@@ -21,6 +24,8 @@ const callAPI = ({ dispatch, getState }) => next => (action) => {
   if (!shouldCallAPI(getState())) {
     return false;
   }
+
+  console.log(options)
 
   const typeRequest = `${type}_REQUEST`;
   const typeSuccess = `${type}_SUCCESS`;

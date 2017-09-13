@@ -20,12 +20,11 @@ class WordListPageContainer extends React.Component {
   }
 
   render() {
-    const words = this.props.wordList.map((word, index) => (
+    const words = this.props.wordList.map(({ known, word }, index) => (
       <Table.Row key={index}>
         <Table.Cell textAlign="center">
           <Checkbox
-            name={`[${index}].status`}
-            value={'NEW'}
+            value={known}
             onChange={(e, a) => this.handleStatusChange(e, word.id, a)}
             checkboxClass="icheckbox_square-green"
             increaseArea="20%"

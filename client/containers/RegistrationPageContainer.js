@@ -21,7 +21,6 @@ class App extends React.Component {
 
   handlePasswordChange = (event) => {
     this.setState({ password: event.target.value });
-    console.log(event.target.value);
   }
 
   handleSubmit = (event) => {

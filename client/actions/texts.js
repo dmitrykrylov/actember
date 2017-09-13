@@ -4,7 +4,7 @@ import * as actionTypes from '../constants/ActionTypes';
 export function addText(params) {
   return {
     url: '/api/texts/',
-    method: 'POST',
+    options: { method: 'POST', body: JSON.stringify(params) },
     type: actionTypes.ADD_TEXT,
   };
 }

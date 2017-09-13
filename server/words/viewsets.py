@@ -1,5 +1,6 @@
 from rest_framework import viewsets
-from .models import Word, UserWord
+from .models import Word
+from users.models import UserWord
 from .serializers import WordSerializer, UserWordSerializer
 
 
