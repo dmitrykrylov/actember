@@ -15,3 +15,11 @@ export function fetchWord(id) {
     url: `/api/words/${id}/`,
   };
 }
+
+
+export function fetchWordStatus(id) {
+  return {
+    type: actionTypes.FETCH_WORD,
+    url: `/api/words/${id}/`,
+  };
+}

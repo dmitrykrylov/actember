@@ -1,14 +1,22 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchWordList } from '../actions/words';
-import { Form, Table, Grid, Checkbox, Select } from 'semantic-ui-react';
-// import 'icheck/skins/all.css'; // or single skin css
-// import { Checkbox } from 'react-icheck';
+import { Form, Table, Grid, Select } from 'semantic-ui-react';
+import 'icheck/skins/all.css'; // or single skin css
+import { Checkbox } from 'react-icheck';
 
 
 class WordListPageContainer extends React.Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+    this.handleStatusChange = this.handleStatusChange.bind(this);
     this.props.fetchWordList();
+  }
+
+  handleStatusChange(e, wordId, a) {
+    console.log(e.target.checked)
+    console.log(wordId)
+    console.log(a)
   }
 
   render() {
@@ -16,12 +24,13 @@ class WordListPageContainer extends React.Component {
       <Table.Row key={index}>
         <Table.Cell textAlign="center">
           <Checkbox
-            checkboxClass="icheckbox_square-blue"
-            increaseArea="20%"
             name={`[${index}].status`}
             value={'NEW'}
+            onChange={(e, a) => this.handleStatusChange(e, word.id, a)}
+            checkboxClass="icheckbox_square-green"
+            increaseArea="20%"
           />
-          </Table.Cell>
+        </Table.Cell>
         <Table.Cell><strong>{word && word.lemma}</strong></Table.Cell>
         <Table.Cell>{word && word.description}</Table.Cell>
       </Table.Row>
