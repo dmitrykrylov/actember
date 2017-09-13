@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchWordList } from '../actions/words';
+import { fetchWordList, updateWordStatus } from '../actions/words';
 import { Form, Table, Grid, Select } from 'semantic-ui-react';
 import 'icheck/skins/all.css'; // or single skin css
 import { Checkbox } from 'react-icheck';
@@ -13,25 +13,23 @@ class WordListPageContainer extends React.Component {
     this.props.fetchWordList();
   }
 
-  handleStatusChange(e, wordId, a) {
-    console.log(e.target.checked)
-    console.log(wordId)
-    console.log(a)
+  handleStatusChange(wordId, known) {
+    this.props.updateWordStatus({ wordId, known });
   }
 
   render() {
-    const words = this.props.wordList.map(({ known, word }, index) => (
+    const words = this.props.wordList.map((item, index) => (
       <Table.Row key={index}>
         <Table.Cell textAlign="center">
           <Checkbox
-            value={known}
-            onChange={(e, a) => this.handleStatusChange(e, word.id, a)}
+            checked={item.known}
+            onChange={(e, value) => this.handleStatusChange(item.id, value)}
             checkboxClass="icheckbox_square-green"
             increaseArea="20%"
           />
         </Table.Cell>
-        <Table.Cell><strong>{word && word.lemma}</strong></Table.Cell>
-        <Table.Cell>{word && word.description}</Table.Cell>
+        <Table.Cell><strong>{item.word && item.word.lemma}</strong></Table.Cell>
+        <Table.Cell>{item.word && item.word.description}</Table.Cell>
       </Table.Row>
     ));
 
@@ -56,12 +54,24 @@ class WordListPageContainer extends React.Component {
             <Form>
               <Form.Field>
                 <label>Show</label>
-                <Select defaultValue='null' options={[{ text: 'All', value: 'null' }]}>
+                <Select
+                  defaultValue="null"
+                  options={[
+                    { text: 'All', value: 'null' },
+                    { text: 'Unknown', value: 'uknown' },
+                    { text: 'Known', value: 'known' },
+                  ]}
+                >
                 </Select>
               </Form.Field>
               <Form.Field>
                 <label>Sort By</label>
-                <Select defaultValue='null' options={[{ text: 'Alphabet', value: 'null' }]}>
+                <Select
+                  defaultValue="null"
+                  options={[
+                    { text: 'Alphabet', value: 'null' },
+                  ]}
+                >
                 </Select>
               </Form.Field>
             </Form>
@@ -81,4 +91,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, { fetchWordList })(WordListPageContainer);
+export default connect(mapStateToProps, { fetchWordList, updateWordStatus })(WordListPageContainer);

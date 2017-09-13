@@ -10,7 +10,7 @@ class WordSerializer(serializers.ModelSerializer):
 
 
 class UserWordSerializer(serializers.ModelSerializer):
-    word = WordSerializer()
+    word = WordSerializer(read_only=True)
 
     class Meta:
         model = UserWord

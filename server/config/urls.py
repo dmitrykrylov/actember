@@ -25,7 +25,8 @@ from words.viewsets import WordViewSet, UserWordViewSet
 
 router = DefaultRouter()
 router.register(r'texts', TextViewSet)
-router.register(r'words', UserWordViewSet)
+router.register(r'user/words', UserWordViewSet)
+router.register(r'words', WordViewSet)
 
 
 urlpatterns = [

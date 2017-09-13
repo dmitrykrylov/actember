@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Header, Popup, Menu } from 'semantic-ui-react';
+import { Header, Popup, Menu, Container } from 'semantic-ui-react';
 import { fetchText } from '../actions/texts';
 import { fetchWord } from '../actions/words';
+import { Route, Switch, Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 class TextPageContainer extends React.Component {
@@ -10,11 +12,9 @@ class TextPageContainer extends React.Component {
     super(props);
 
     this.handlePopupOpen = this.handlePopupOpen.bind(this);
-    this.handleItemClick = this.handleItemClick.bind(this);
-  }
-
-  componentWillMount() {
     this.props.fetchText(this.props.match.params.id);
+
+    this.state = { popupOpen: false };
   }
 
   handlePopupOpen(e, wordId) {
@@ -23,44 +23,48 @@ class TextPageContainer extends React.Component {
     }
   }
 
-  handleItemClick() {
-
-  }
-
   render() {
-    const { text } = this.props;
-    
-    if (!text.processed) { return <div />; }
+    const { text, cachedWords, match } = this.props;
 
+    if (!text.processed) { return <div />; }
 
     const tr = text.processed.strings.map((item, i) => {
       if (item.s === String.fromCharCode(10)) {
         return <br key={i} />
       } else if (item.id) {
-        let string = <strong onMouseEnter={e => this.handlePopupOpen(e, item.id)} key={i}>{item.s}</strong>
-        const isWordFetched = this.props.cachedWords[item.id] !== undefined;
+        const string = <strong>{item.s}</strong>;
+        const isWordFetched = cachedWords[item.id] !== undefined;
+
         return (
           <Popup
             key={i}
             trigger={string}
             position='bottom center'
             header={item.s}
-            content={isWordFetched && this.props.cachedWords[item.id].description}
+            content={isWordFetched && cachedWords[item.id].description}
+            onOpen={(e) => this.handlePopupOpen(e, item.id)}
           />
         );
       }
-      return <span key={i}>{item.s}</span>
+      return <span key={i}>{item.s}</span>;
     });
 
     return (
-      <div>
-        <Header as='h2'>{text.title}</Header>
+      <Container text>
+        <Header as="h2">{text.title}</Header>
         <Menu secondary>
-          <Menu.Item name='Read Text' active={true} onClick={this.handleItemClick} />
-          <Menu.Item name='Study Words' active={false} onClick={this.handleItemClick} />
+          <Link to={`/texts/${match.params.id}`}>
+            <Menu.Item name="Read Text" active={true} onClick={this.handleItemClick} />
+          </Link>
+          <Link to={`/texts/${match.params.id}/words`}>
+            <Menu.Item name="Study Words" active={false} onClick={this.handleItemClick} />
+          </Link>
         </Menu>
-        <div id="f">{tr}</div>
-      </div>
+        <Switch>
+          <Route exact path="/texts/:id" component={() => <div>{tr}</div>} />
+          <Route exact path="words" component={() => 'Hi!'} />
+        </Switch>
+      </Container>
     );
   }
 }

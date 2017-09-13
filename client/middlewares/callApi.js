@@ -46,6 +46,7 @@ const callAPI = ({ dispatch, getState }) => next => (action) => {
       return response.json();
     })
     .then((json) => {
+      console.log(json)
       if (!json.error) {
         dispatch({
           type: typeSuccess,

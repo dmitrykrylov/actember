@@ -12,6 +12,7 @@ import LoginPageContainer from './LoginPageContainer';
 import RegistrationPageContainer from './RegistrationPageContainer';
 import { logout } from '../actions/auth';
 import '../styles/main.scss';
+import logo from '../assets/logo.png';
 
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => (
@@ -66,7 +67,7 @@ class App extends React.Component {
                       <Route exact path="/" component={TextListPageContainer} />
                       <Route exact path="/texts" component={TextListPageContainer} />
                       <Route exact path="/texts/new" component={NewTextPageContainer} />
-                      <Route exact path="/texts/:id" component={TextPageContainer} />
+                      <Route path="/texts/:id" component={TextPageContainer} />
                       <Route exact path="/words" component={WordListPageContainer} />
                     </Switch>
                   </Container>

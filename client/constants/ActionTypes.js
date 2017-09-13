@@ -16,4 +16,4 @@ export const FETCH_WORD_LIST = 'FETCH_WORD_LIST';
 
 export const FETCH_WORD = 'FETCH_WORD';
 
-export const UPDATE_WORD_STATUS = 'UPDATE_WORD_STATUS';
+export const UPDATE_WORD = 'UPDATE_WORD';

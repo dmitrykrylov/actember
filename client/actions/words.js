@@ -4,7 +4,7 @@ import * as actionTypes from '../constants/ActionTypes';
 export function fetchWordList() {
   return {
     type: actionTypes.FETCH_WORD_LIST,
-    url: '/api/words/',
+    url: '/api/user/words/',
   };
 }
 
@@ -17,9 +17,14 @@ export function fetchWord(id) {
 }
 
 
-export function fetchWordStatus(id) {
+export function updateWordStatus({ wordId, known }) {
   return {
-    type: actionTypes.FETCH_WORD,
-    url: `/api/words/${id}/`,
+    type: actionTypes.UPDATE_WORD,
+    url: `/api/user/words/${wordId}/`,
+    options: {
+      method: 'PUT',
+      body: JSON.stringify({ known }),
+    },
+    payload: { wordId, known },
   };
 }
