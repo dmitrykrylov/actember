@@ -24,3 +24,11 @@ export function fetchTextList() {
     type: actionTypes.FETCH_TEXT_LIST,
   };
 }
+
+
+export function fetchTextWords(id) {
+  return {
+    url: `/api/texts/${id}/words`,
+    type: actionTypes.FETCH_TEXT_WORD_LIST,
+  };
+}

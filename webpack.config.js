@@ -12,17 +12,19 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve('dist'),
+    publicPath: '/',
   },
   module: {
     loaders: [
-      { test: /\.js$/,
+      {
+        test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        // exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+        include: /node_modules/,
       },
       {
         test: /\.(scss)$/,
@@ -32,7 +34,7 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+          'file-loader',
           {
             loader: 'image-webpack-loader',
             query: {

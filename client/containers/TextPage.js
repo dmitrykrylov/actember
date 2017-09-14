@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Header, Popup, Menu, Container } from 'semantic-ui-react';
-import { fetchText } from '../actions/texts';
+import { Grid, Header, Popup, Menu, Container } from 'semantic-ui-react';
+import { fetchText, fetchTextWords } from '../actions/texts';
 import { fetchWord } from '../actions/words';
-import { Route, Switch, Redirect } from 'react-router';
+import { Route, Switch } from 'react-router';
 import { Link } from 'react-router-dom';
+import WordListPage from './WordListPage';
 
 
 class TextPageContainer extends React.Component {
@@ -13,6 +14,7 @@ class TextPageContainer extends React.Component {
 
     this.handlePopupOpen = this.handlePopupOpen.bind(this);
     this.props.fetchText(this.props.match.params.id);
+    this.props.fetchTextWords(this.props.match.params.id);
 
     this.state = { popupOpen: false };
   }
@@ -25,6 +27,7 @@ class TextPageContainer extends React.Component {
 
   render() {
     const { text, cachedWords, match } = this.props;
+    const activeTab = this.props.location.pathname.split('/')[3] === 'words' ? 1 : 0;
 
     if (!text.processed) { return <div />; }
 
@@ -50,21 +53,27 @@ class TextPageContainer extends React.Component {
     });
 
     return (
-      <Container text>
-        <Header as="h2">{text.title}</Header>
-        <Menu secondary>
-          <Link to={`/texts/${match.params.id}`}>
-            <Menu.Item name="Read Text" active={true} onClick={this.handleItemClick} />
-          </Link>
-          <Link to={`/texts/${match.params.id}/words`}>
-            <Menu.Item name="Study Words" active={false} onClick={this.handleItemClick} />
-          </Link>
-        </Menu>
-        <Switch>
-          <Route exact path="/texts/:id" component={() => <div>{tr}</div>} />
-          <Route exact path="words" component={() => 'Hi!'} />
-        </Switch>
-      </Container>
+      <div>
+        <Container text>
+          <Header as="h2">{text.title}</Header>
+          <Menu secondary>
+            <Link to={`/texts/${match.params.id}`}>
+              <Menu.Item name="Read Text" active={activeTab === 0} onClick={this.handleItemClick} />
+            </Link>
+            <Link to={`/texts/${match.params.id}/words`}>
+              <Menu.Item name="Study Words" active={activeTab === 1} onClick={this.handleItemClick} />
+            </Link>
+          </Menu>
+        </Container>
+          <Switch>
+            <Route exact path="/texts/:id" component={() => <Container text>{tr}</Container>} />
+            <Route
+              exact
+              path="/texts/:id/words"
+              component={() => <WordListPage />}
+            />
+          </Switch>
+      </div>
     );
   }
 }
@@ -85,8 +94,9 @@ function mapStateToProps(state) {
   return {
     text,
     cachedWords,
+    words: texts.words,
   };
 }
 
 
-export default connect(mapStateToProps, { fetchText, fetchWord })(TextPageContainer);
+export default connect(mapStateToProps, { fetchText, fetchWord, fetchTextWords })(TextPageContainer);

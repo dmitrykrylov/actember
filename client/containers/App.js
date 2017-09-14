@@ -4,15 +4,15 @@ import { Route, Switch, Redirect } from 'react-router';
 import { Segment, Menu, Container } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
-import TextListPageContainer from './TextListPageContainer';
-import NewTextPageContainer from './NewTextPageContainer';
-import WordListPageContainer from './WordListPageContainer';
-import TextPageContainer from './TextPageContainer';
-import LoginPageContainer from './LoginPageContainer';
-import RegistrationPageContainer from './RegistrationPageContainer';
+import TextListPage from './TextListPage';
+import NewTextPage from './NewTextPage';
+import WordListPage from './WordListPage';
+import TextPage from './TextPage';
+import LoginPage from './LoginPage';
+import RegistrationPage from './RegistrationPage';
 import { logout } from '../actions/auth';
 import '../styles/main.scss';
-import logo from '../assets/logo.png';
+// import logo from '../assets/logo.png';
 
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => (
@@ -53,8 +53,8 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
-          <Route path="/login" component={LoginPageContainer} />
-          <Route path="/register" component={RegistrationPageContainer} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegistrationPage} />
           <PrivateRoute
             authed={isAuthenticated}
             path="/"
@@ -64,11 +64,11 @@ class App extends React.Component {
                 <Segment basic>
                   <Container>
                     <Switch>
-                      <Route exact path="/" component={TextListPageContainer} />
-                      <Route exact path="/texts" component={TextListPageContainer} />
-                      <Route exact path="/texts/new" component={NewTextPageContainer} />
-                      <Route path="/texts/:id" component={TextPageContainer} />
-                      <Route exact path="/words" component={WordListPageContainer} />
+                      <Route exact path="/" component={TextListPage} />
+                      <Route exact path="/texts" component={TextListPage} />
+                      <Route exact path="/texts/new" component={NewTextPage} />
+                      <Route path="/texts/:id" component={TextPage} />
+                      <Route exact path="/words" component={WordListPage} />
                     </Switch>
                   </Container>
                 </Segment>
