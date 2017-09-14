@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchTextList } from '../actions/texts';
-import { Table } from 'semantic-ui-react';
+import { Table, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -22,17 +22,20 @@ class TextListPageContainer extends React.Component {
     ));
 
     return (
-      <Table className="columns">
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Title</Table.HeaderCell>
-            <Table.HeaderCell textAlign="center">Total words</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {texts}
-        </Table.Body>
-      </Table>
+      <div>
+        <Header as="h1">Texts</Header>
+        <Table className="columns">
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Title</Table.HeaderCell>
+              <Table.HeaderCell textAlign="center">Total words</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {texts}
+          </Table.Body>
+        </Table>
+      </div>
     );
   }
 }

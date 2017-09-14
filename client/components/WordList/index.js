@@ -28,7 +28,7 @@ const WordList = (props) => {
           <Table.HeaderCell textAlign="center">Known</Table.HeaderCell>
           <Table.HeaderCell>Word</Table.HeaderCell>
           <Table.HeaderCell>Description</Table.HeaderCell>
-          <Table.HeaderCell>Count</Table.HeaderCell>
+          {props.hasTextData && <Table.HeaderCell>Count</Table.HeaderCell>}
         </Table.Row>
       </Table.Header>
       <Table.Body>

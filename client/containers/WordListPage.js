@@ -5,11 +5,11 @@ import { fetchWordList, updateWordStatus } from '../actions/words';
 import WordList from '../components/WordList';
 
 
-class WordListPageContainer extends React.Component {
+class WordListPage extends React.Component {
   constructor(props) {
     super(props);
     this.handleStatusChange = this.handleStatusChange.bind(this);
-    this.props.fetchWordList();
+    this.props.fetchWords ? this.props.fetchWords() : this.props.fetchWordList();
   }
 
   handleStatusChange(wordId, known) {
@@ -58,10 +58,8 @@ class WordListPageContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   const { wordList } = state.words;
-  return {
-    wordList,
-  };
+  return { wordList };
 };
 
 
-export default connect(mapStateToProps, { fetchWordList, updateWordStatus })(WordListPageContainer);
+export default connect(mapStateToProps, { fetchWordList, updateWordStatus })(WordListPage);

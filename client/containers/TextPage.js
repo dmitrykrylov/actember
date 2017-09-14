@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Header, Popup, Menu, Container } from 'semantic-ui-react';
-import { fetchText, fetchTextWords } from '../actions/texts';
-import { fetchWord } from '../actions/words';
+import { fetchText } from '../actions/texts';
+import { fetchWord, fetchTextWords } from '../actions/words';
 import { Route, Switch } from 'react-router';
 import { Link } from 'react-router-dom';
 import WordListPage from './WordListPage';
@@ -14,7 +14,6 @@ class TextPageContainer extends React.Component {
 
     this.handlePopupOpen = this.handlePopupOpen.bind(this);
     this.props.fetchText(this.props.match.params.id);
-    this.props.fetchTextWords(this.props.match.params.id);
 
     this.state = { popupOpen: false };
   }
@@ -54,7 +53,6 @@ class TextPageContainer extends React.Component {
 
     return (
       <div>
-        <Container text>
           <Header as="h2">{text.title}</Header>
           <Menu secondary>
             <Link to={`/texts/${match.params.id}`}>
@@ -64,13 +62,14 @@ class TextPageContainer extends React.Component {
               <Menu.Item name="Study Words" active={activeTab === 1} onClick={this.handleItemClick} />
             </Link>
           </Menu>
-        </Container>
           <Switch>
             <Route exact path="/texts/:id" component={() => <Container text>{tr}</Container>} />
             <Route
               exact
               path="/texts/:id/words"
-              component={() => <WordListPage />}
+              component={() => (
+                <WordListPage fetchWords={() => this.props.fetchTextWords(this.props.match.params.id)} />
+              )}
             />
           </Switch>
       </div>

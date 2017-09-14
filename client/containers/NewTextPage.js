@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
 import { addText } from '../actions/texts';
 import { reduxForm } from 'redux-form';
 import NewTextForm from '../components/NewTextForm';
@@ -15,6 +15,7 @@ class NewTextPageContainer extends React.Component {
       <Grid>
         <Grid.Row centered>
           <Grid.Column width={8}>
+            <Header as="h1">Add New Text</Header>
             <Form onSubmit={this.props.addText} />
           </Grid.Column>
         </Grid.Row>

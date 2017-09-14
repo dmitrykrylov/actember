@@ -19,8 +19,9 @@ class UserWordSerializer(serializers.ModelSerializer):
 
 
 class TextWordSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='user_word.id')
+    known = serializers.BooleanField(source='user_word.known')
     word = WordSerializer(read_only=True, source='user_word.word')
-    # location = serializers.SomeSerializerField(source='user_word__')
 
     class Meta:
         model = TextWord

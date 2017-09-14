@@ -28,6 +28,7 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => (
 
 const Nav = withRouter(({ history, logout }) => (
   <Menu secondary inverted borderless size="large" color="violet">
+    <Container>
     <Menu.Menu position="right">
       <Menu.Item name="texts" onClick={() => history.push("/texts")}>
         Texts
@@ -42,6 +43,7 @@ const Nav = withRouter(({ history, logout }) => (
         Logout
       </Menu.Item>
     </Menu.Menu>
+    </Container>
   </Menu>
 ));
 
@@ -61,7 +63,6 @@ class App extends React.Component {
             component={(() => (
               <div>
                 <Nav logout={logout} />
-                <Segment basic>
                   <Container>
                     <Switch>
                       <Route exact path="/" component={TextListPage} />
@@ -71,7 +72,6 @@ class App extends React.Component {
                       <Route exact path="/words" component={WordListPage} />
                     </Switch>
                   </Container>
-                </Segment>
               </div>
             ))}
           />

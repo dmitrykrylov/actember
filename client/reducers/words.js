@@ -11,6 +11,8 @@ export default function words(state = initialState, action) {
   switch (action.type) {
     case `${actionTypes.FETCH_WORD_LIST}_SUCCESS`:
       return { ...state, wordList: action.response.results };
+    case `${actionTypes.FETCH_TEXT_WORD_LIST}_SUCCESS`:
+      return { ...state, wordList: action.response.results };
     case `${actionTypes.FETCH_WORD}_SUCCESS`:
       return {
         ...state,

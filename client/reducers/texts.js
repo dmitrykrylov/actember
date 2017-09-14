@@ -4,7 +4,6 @@ import * as actionTypes from '../constants/ActionTypes';
 const initialState = {
   textList: [],
   text: {},
-  words: [],
 };
 
 export default function texts(state = initialState, action) {
@@ -13,8 +12,6 @@ export default function texts(state = initialState, action) {
       return { ...state, textList: action.response.results };
     case 'FETCH_TEXT_SUCCESS':
       return { ...state, text: action.response };
-    case 'FETCH_TEXT_WORD_LIST_SUCCESS':
-      return { ...state, words: action.response.results };
     default:
       return {
         ...state,

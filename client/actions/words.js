@@ -28,3 +28,10 @@ export function updateWordStatus({ wordId, known }) {
     payload: { wordId, known },
   };
 }
+
+export function fetchTextWords(id) {
+  return {
+    url: `/api/texts/${id}/words`,
+    type: actionTypes.FETCH_TEXT_WORD_LIST,
+  };
+}
