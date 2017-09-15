@@ -3,29 +3,32 @@ import { connect } from 'react-redux';
 import { Grid, Header } from 'semantic-ui-react';
 import { addText } from '../actions/texts';
 import { reduxForm } from 'redux-form';
-import NewTextForm from '../components/NewTextForm';
+import NewTextForm, { validate } from '../components/NewTextForm';
 
 
-const Form = reduxForm({ form: 'newText' })(NewTextForm);
+const Form = reduxForm({ form: 'newText', validate })(NewTextForm);
 
 
 class NewTextPageContainer extends React.Component {
   render() {
     return (
-      <Grid>
-        <Grid.Row centered>
-          <Grid.Column width={8}>
-            <Header as="h1">Add New Text</Header>
-            <Form onSubmit={this.props.addText} />
-          </Grid.Column>
-        </Grid.Row>
+      <Grid verticalAlign="middle" centered>
+        <Grid.Column computer={8} mobile={16}>
+          <Header as="h2">Add New Text</Header>
+          <Form errors={this.props.syncErrors} onSubmit={this.props.addText} />
+        </Grid.Column>
       </Grid>
     );
   }
 }
 
 
-NewTextPageContainer.propTypes = {};
+NewTextPageContainer.propTypes = {
+  syncErrors: PropTypes.object,
+  addText: PropTypes.func,
+};
 
 
-export default connect(() => ({}), { addText })(NewTextPageContainer);
+const mapStateToProps = state => ({});
+
+export default connect(mapStateToProps, { addText })(NewTextPageContainer);

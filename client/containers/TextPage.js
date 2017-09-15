@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Header, Popup, Menu, Container } from 'semantic-ui-react';
+import { Header, Popup, Menu, Container } from 'semantic-ui-react';
 import { fetchText } from '../actions/texts';
 import { fetchWord, fetchTextWords } from '../actions/words';
 import { Route, Switch } from 'react-router';
@@ -56,11 +56,29 @@ class TextPageContainer extends React.Component {
           <Header as="h2">{text.title}</Header>
           <Menu secondary>
             <Link to={`/texts/${match.params.id}`}>
-              <Menu.Item name="Read Text" active={activeTab === 0} onClick={this.handleItemClick} />
+              <Menu.Item
+                name="Read Text"
+                active={activeTab === 0}
+                onClick={this.handleItemClick}
+                icon="book"
+              />
             </Link>
             <Link to={`/texts/${match.params.id}/words`}>
-              <Menu.Item name="Study Words" active={activeTab === 1} onClick={this.handleItemClick} />
+              <Menu.Item
+                name="Study Words"
+                active={activeTab === 1}
+                onClick={this.handleItemClick}
+                icon="student"
+              />
             </Link>
+              <Menu.Item
+                name="Delete Text"
+                onClick={() => confirm('Are you sure?')}
+                position="right"
+                color="red"
+                icon="delete"
+                active
+              />
           </Menu>
           <Switch>
             <Route exact path="/texts/:id" component={() => <Container text>{tr}</Container>} />

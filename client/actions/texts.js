@@ -6,6 +6,7 @@ export function addText(params) {
     url: '/api/texts/',
     options: { method: 'POST', body: JSON.stringify(params) },
     type: actionTypes.ADD_TEXT,
+    redirectUrl: '/texts',
   };
 }
 

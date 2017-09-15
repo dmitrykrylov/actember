@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import { API_BASE_URL } from '../config';
+import { push } from 'react-router-redux';
 
 
 const callAPI = ({ dispatch, getState }) => next => (action) => {
@@ -10,6 +11,7 @@ const callAPI = ({ dispatch, getState }) => next => (action) => {
     shouldCallAPI = () => true,
     payload = {},
     options = {},
+    redirectUrl,
   } = action;
 
   options.headers = {
@@ -24,8 +26,6 @@ const callAPI = ({ dispatch, getState }) => next => (action) => {
   if (!shouldCallAPI(getState())) {
     return false;
   }
-
-  console.log(options)
 
   const typeRequest = `${type}_REQUEST`;
   const typeSuccess = `${type}_SUCCESS`;
@@ -46,13 +46,13 @@ const callAPI = ({ dispatch, getState }) => next => (action) => {
       return response.json();
     })
     .then((json) => {
-      console.log(json)
       if (!json.error) {
         dispatch({
           type: typeSuccess,
           payload,
           response: json,
         });
+        if (redirectUrl) { dispatch(push(redirectUrl)); }
         resolve(json);
       } else {
         dispatch({

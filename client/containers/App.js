@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router';
-import { Segment, Menu, Container } from 'semantic-ui-react';
+import { Responsive, Menu, Container } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
 import TextListPage from './TextListPage';
@@ -12,7 +12,7 @@ import LoginPage from './LoginPage';
 import RegistrationPage from './RegistrationPage';
 import { logout } from '../actions/auth';
 import '../styles/main.scss';
-// import logo from '../assets/logo.png';
+
 
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => (
@@ -29,20 +29,20 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => (
 const Nav = withRouter(({ history, logout }) => (
   <Menu secondary inverted borderless size="large" color="violet">
     <Container>
-    <Menu.Menu position="right">
-      <Menu.Item name="texts" onClick={() => history.push("/texts")}>
-        Texts
-      </Menu.Item>
-      <Menu.Item name="texts-new" onClick={() => history.push("/texts/new")}>
-         New Text
-      </Menu.Item>
-      <Menu.Item name="words" onClick={() => history.push("/words")}>
-        Words
-      </Menu.Item>
-      <Menu.Item name="login" onClick={logout}>
-        Logout
-      </Menu.Item>
-    </Menu.Menu>
+      <Menu.Menu position="right">
+        <Menu.Item name="texts" onClick={() => history.push("/texts")}>
+          Texts
+        </Menu.Item>
+        <Menu.Item name="texts-new" onClick={() => history.push("/texts/new")}>
+           New Text
+        </Menu.Item>
+        <Menu.Item name="words" onClick={() => history.push("/words")}>
+          Words
+        </Menu.Item>
+        <Menu.Item name="login" onClick={logout}>
+          Logout
+        </Menu.Item>
+      </Menu.Menu>
     </Container>
   </Menu>
 ));
@@ -62,7 +62,7 @@ class App extends React.Component {
             path="/"
             component={(() => (
               <div>
-                <Nav logout={logout} />
+                <Responsive as={Nav} logout={logout} />
                   <Container>
                     <Switch>
                       <Route exact path="/" component={TextListPage} />

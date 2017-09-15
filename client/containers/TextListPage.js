@@ -23,7 +23,7 @@ class TextListPageContainer extends React.Component {
 
     return (
       <div>
-        <Header as="h1">Texts</Header>
+        <Header as="h2">Texts</Header>
         <Table className="columns">
           <Table.Header>
             <Table.Row>
