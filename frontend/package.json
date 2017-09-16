@@ -2,13 +2,13 @@
   "name": "actember-frontend",
   "version": "0.0.0",
   "description": "",
-  "main": "client/index.js",
+  "main": "./index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "lint": "node_modules/eslint/bin/eslint.js .; exit 0",
     "lintfix": "node_modules/eslint/bin/eslint.js . --fix; exit 0"
   },
-  "author": "",
+  "author": "Dmitry Krylov",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.24.0",
@@ -25,6 +25,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^3.4.2",
     "node-sass": "^4.5.0",
     "sass-loader": "^6.0.3",

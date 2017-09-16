@@ -13,6 +13,12 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import datetime
 
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,12 +28,12 @@ AUTH_USER_MODEL = 'users.User'
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(6fy=su_-m%&z$ki#7c&cil5hj9n7to1=+!g=%v#3bnvug&(!g'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =  ["*",]
 
 
 # Application definition
@@ -150,7 +156,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-    'PAGE_SIZE': 1000,
+    'PAGE_SIZE': 100,
 }
 
 JWT_AUTH = {

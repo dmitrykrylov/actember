@@ -32,6 +32,6 @@ router.register(r'words', WordViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
-    url(r'^api-token-auth/', obtain_jwt_token),
-    url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^api/api-token-auth/', obtain_jwt_token),
+    url(r'^api/api-token-refresh/', refresh_jwt_token),
 ]

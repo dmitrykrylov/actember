@@ -1,18 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
-
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './client/index.js',
+    './index.js',
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve('dist'),
-    publicPath: '/',
+    path: path.resolve(__dirname, 'dist'),
+    // publicPath: '/',
   },
   module: {
     loaders: [
@@ -51,10 +51,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'index.html') }),
   ],
   devServer: {
     hot: true,
-    contentBase: path.resolve(__dirname, './client'),  // New
+    contentBase: path.resolve(__dirname, './'),  // New
     historyApiFallback: true,
     publicPath: '/',
   },

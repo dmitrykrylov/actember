@@ -43,6 +43,6 @@ const render = () => {
 render(App);
 
 
-if (module.hot) {
-  module.hot.accept('./containers/App', () => { render(App); });
-}
+// if (module.hot) {
+//   module.hot.accept('./containers/App', () => { render(App); });
+// }

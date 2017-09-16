@@ -13,7 +13,7 @@ export function login(creds) {
       creds,
     });
 
-    axios.post(`${API_BASE_URL}/api-token-auth/`, creds).then((response) => {
+    axios.post(`${API_BASE_URL}/api/api-token-auth/`, creds).then((response) => {
       localStorage.setItem('token', response.data.token);
 
       dispatch({
@@ -44,7 +44,7 @@ export function logout(creds) {
     });
     dispatch(push('/login'));
 
-    axios.post(`${API_BASE_URL}/logout/`, creds).then((response) => {
+    axios.post(`${API_BASE_URL}/api/logout/`, creds).then((response) => {
       localStorage.removeItem('token', response.data.token);
 
       dispatch({
