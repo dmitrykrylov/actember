@@ -22,12 +22,17 @@ AUTH_USER_MODEL = 'users.User'
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(6fy=su_-m%&z$ki#7c&cil5hj9n7to1=+!g=%v#3bnvug&(!g'
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    '(6fy=su_-m%&z$ki#7c&cil5hj9n7to1=+!g=%v#3bnvug&(!g'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'actember.herokuapp.com'
+]
 
 
 # Application definition
