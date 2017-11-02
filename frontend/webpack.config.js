@@ -57,5 +57,6 @@ module.exports = {
     contentBase: path.resolve(__dirname),  // New
     historyApiFallback: true,
     publicPath: '/',
+    port: 3000,
   },
 };

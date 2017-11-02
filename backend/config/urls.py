@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from rest_framework.routers import DefaultRouter
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
@@ -34,4 +35,5 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
 ]
