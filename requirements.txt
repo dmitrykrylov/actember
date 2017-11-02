@@ -5,12 +5,13 @@ django-cors-headers==2.0.2
 django-filter==1.0.4
 djangorestframework==3.6.2
 djangorestframework-jwt==1.11.0
+gunicorn==19.7.1
 ijson==2.3
 nltk==3.2.2
 packaging==16.8
 psycopg2==2.7.1
 PyJWT==1.5.2
 pyparsing==2.2.0
-python-dotenv==0.6.3
+python-dotenv==0.7.1
 requests==2.13.0
 six==1.10.0
