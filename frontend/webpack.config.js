@@ -7,7 +7,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './client/index.js',
+    './index.js',
   ],
   output: {
     filename: 'bundle.js',
@@ -54,7 +54,7 @@ module.exports = {
   ],
   devServer: {
     hot: true,
-    contentBase: path.resolve(__dirname, './client'),  // New
+    contentBase: path.resolve(__dirname),  // New
     historyApiFallback: true,
     publicPath: '/',
   },
