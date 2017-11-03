@@ -7,7 +7,8 @@
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack",
     "lint": "node_modules/eslint/bin/eslint.js .; exit 0",
-    "lintfix": "node_modules/eslint/bin/eslint.js . --fix; exit 0"
+    "lintfix": "node_modules/eslint/bin/eslint.js . --fix; exit 0",
+    "heroku-postbuild": "NODE_ENV=production webpack"
   },
   "author": "",
   "license": "ISC",
