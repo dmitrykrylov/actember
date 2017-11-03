@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-if os.environ.get(DATABASE_URL) is not None:
+if os.environ.get('DATABASE_URL') is not None:
     DATABASES = {
         'default': dj_database_url.config(
             default=os.environ.get('DATABASE_URL')
