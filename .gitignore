@@ -94,8 +94,8 @@ ENV/
 .ropeproject
 
 # Migrations for simpler development db management
-**/migrations/*
-!**/migrations/__init__.py
+# **/migrations/*
+# !**/migrations/__init__.py
 
 # SQLite
 *.sqlite3
