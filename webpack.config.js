@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const entry = process.env.NODE_ENV === 'development' ?
   [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     './frontend/index.js',
   ] :

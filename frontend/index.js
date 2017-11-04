@@ -9,7 +9,7 @@ import { AppContainer } from 'react-hot-loader';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import callAPIMiddleware from './middlewares/callApi';
-import rootReducer from './reducers';
+import rootReducer from './ducks';
 import App from './containers/App';
 import rootSaga from './sagas';
 
@@ -25,6 +25,7 @@ if (process.env.NODE_ENV !== 'development') {
 } else {
   composeEnhancers = composeWithDevTools({
     // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+    port: 3000,
   });
 }
 
@@ -33,6 +34,8 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk, sagaMiddleware, callAPIMiddleware, routerMiddleware(history))),
 );
+
+store.sagaTask = sagaMiddleware.run(rootSaga);
 
 
 const render = () => {
@@ -49,7 +52,7 @@ const render = () => {
 };
 
 
-render(App);
+render();
 
 
 if (module.hot) {

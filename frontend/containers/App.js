@@ -14,7 +14,6 @@ import { logout } from '../actions/auth';
 import '../styles/main.scss';
 
 
-
 const PrivateRoute = ({ component: Component, authed, ...rest }) => (
   <Route
     {...rest}
@@ -89,10 +88,10 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   const { auth } = state;
-  const { isAuthenticated, errorMessage } = auth;
+  const { token } = auth;
 
   return {
-    isAuthenticated,
+    isAuthenticated: !!token,
   };
 }
 
