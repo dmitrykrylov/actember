@@ -1,14 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
 
-
-module.exports = {
-  entry: [
+const entry = process.env.NODE_ENV === 'development' ?
+  [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './frontend/index.js',
-  ],
+  ] :
+  [
+    './frontend/index.js',
+  ];
+
+const config = {
+  entry,
   output: {
     filename: 'bundle.js',
     path: path.resolve('frontend/dist'),
@@ -51,6 +56,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
   ],
   devServer: {
     hot: true,
@@ -60,3 +70,6 @@ module.exports = {
     port: 3000,
   },
 };
+
+
+module.exports = config;
