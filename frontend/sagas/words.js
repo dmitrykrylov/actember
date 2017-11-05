@@ -5,7 +5,7 @@ import { types } from '../ducks/words';
 
 export function* fetchWordList({ payload }) {
   try {
-    const response = yield callApi({ url: '/api/user/words/' });
+    const response = yield callApi({ url: '/api/user/words/', params: payload });
     yield put({ type: types.FETCH_WORD_LIST_SUCCESS, payload: response.data });
   } catch (error) {
     yield put({ type: types.FETCH_WORD_LIST_FAILURE, error });
@@ -35,7 +35,7 @@ export function* updateWordStatus({ payload }) {
 
 export function* fetchTextWords({ payload }) {
   try {
-    const response = yield callApi({ url: `/api/texts/${payload.id}/words` });
+    const response = yield callApi({ url: `/api/texts/${payload.id}/words`, params: payload });
     yield put({ type: types.FETCH_TEXT_WORD_LIST_SUCCESS, payload: response.data });
   } catch (error) {
     yield put({ type: types.FETCH_TEXT_WORD_LIST_FAILURE, error });

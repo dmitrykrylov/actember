@@ -6,8 +6,7 @@ import { actions } from '../ducks/texts';
 
 
 class TextListPageContainer extends React.Component {
-
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTextList();
   }
 

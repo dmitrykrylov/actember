@@ -8,7 +8,7 @@ const getToken = state => state.auth.token;
 // https://github.com/redux-saga/redux-saga/issues/110
 function* callApi({ headers, ...rest }) {
   try {
-    const token = yield select(getToken);
+    const token = yield window.localStorage.getItem('token');
     const response = yield call(
       axios,
       {

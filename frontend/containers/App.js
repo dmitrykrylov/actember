@@ -14,15 +14,18 @@ import { actions } from '../ducks/auth';
 import '../styles/main.scss';
 
 
-const PrivateRoute = ({ component: Component, authed, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => authed ?
-      <Component {...props} /> :
-      <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-    }
-  />
-);
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  console.log(window.localStorage.getItem('token'))
+  return (
+    <Route
+      {...rest}
+      render={props => window.localStorage.getItem('token') ?
+        <Component {...props} /> :
+        <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+      }
+    />
+  );
+};
 
 
 const Nav = withRouter(({ history, logout }) => (
@@ -49,7 +52,7 @@ const Nav = withRouter(({ history, logout }) => (
 
 class App extends React.Component {
   render() {
-    const { isAuthenticated, logout } = this.props;
+    const { logout } = this.props;
 
     return (
       <div>
@@ -57,20 +60,19 @@ class App extends React.Component {
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegistrationPage} />
           <PrivateRoute
-            authed={isAuthenticated}
             path="/"
             component={(() => (
               <div>
                 <Responsive as={Nav} logout={logout} />
-                  <Container>
-                    <Switch>
-                      <Route exact path="/" component={TextListPage} />
-                      <Route exact path="/texts" component={TextListPage} />
-                      <Route exact path="/texts/new" component={NewTextPage} />
-                      <Route path="/texts/:id" component={TextPage} />
-                      <Route exact path="/words" component={WordListPage} />
-                    </Switch>
-                  </Container>
+                <Container>
+                  <Switch>
+                    <Route exact path="/" component={TextListPage} />
+                    <Route exact path="/texts" component={TextListPage} />
+                    <Route exact path="/texts/new" component={NewTextPage} />
+                    <Route path="/texts/:id" component={TextPage} />
+                    <Route exact path="/words" component={WordListPage} />
+                  </Switch>
+                </Container>
               </div>
             ))}
           />
@@ -82,13 +84,13 @@ class App extends React.Component {
 
 
 App.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
+  // isAuthenticated: PropTypes.bool.isRequired,
 };
 
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: !!state.auth.token,
+    // isAuthenticated: !!state.auth.token,
   };
 }
 

@@ -13,9 +13,12 @@ class TextPageContainer extends React.Component {
     super(props);
 
     this.handlePopupOpen = this.handlePopupOpen.bind(this);
-    this.props.fetchText(this.props.match.params.id);
 
     this.state = { popupOpen: false };
+  }
+
+  componentDidMount() {
+    this.props.fetchText(this.props.match.params.id);
   }
 
   handlePopupOpen(e, wordId) {
@@ -53,43 +56,43 @@ class TextPageContainer extends React.Component {
 
     return (
       <div>
-          <Header as="h2">{text.title}</Header>
-          <Menu secondary>
-            <Link to={`/texts/${match.params.id}`}>
-              <Menu.Item
-                name="Read Text"
-                active={activeTab === 0}
-                onClick={this.handleItemClick}
-                icon="book"
-              />
-            </Link>
-            <Link to={`/texts/${match.params.id}/words`}>
-              <Menu.Item
-                name="Study Words"
-                active={activeTab === 1}
-                onClick={this.handleItemClick}
-                icon="student"
-              />
-            </Link>
-              <Menu.Item
-                name="Delete Text"
-                onClick={() => confirm('Are you sure?')}
-                position="right"
-                color="red"
-                icon="delete"
-                active
-              />
-          </Menu>
-          <Switch>
-            <Route exact path="/texts/:id" component={() => <Container text>{tr}</Container>} />
-            <Route
-              exact
-              path="/texts/:id/words"
-              component={() => (
-                <WordListPage fetchWords={() => this.props.fetchTextWords(this.props.match.params.id)} />
-              )}
+        <Header as="h2">{text.title}</Header>
+        <Menu secondary>
+          <Link to={`/texts/${match.params.id}`}>
+            <Menu.Item
+              name="Read Text"
+              active={activeTab === 0}
+              onClick={this.handleItemClick}
+              icon="book"
             />
-          </Switch>
+          </Link>
+          <Link to={`/texts/${match.params.id}/words`}>
+            <Menu.Item
+              name="Study Words"
+              active={activeTab === 1}
+              onClick={this.handleItemClick}
+              icon="student"
+            />
+          </Link>
+            <Menu.Item
+              name="Delete Text"
+              onClick={() => confirm('Are you sure?')}
+              position="right"
+              color="red"
+              icon="delete"
+              active
+            />
+        </Menu>
+        <Switch>
+          <Route exact path="/texts/:id" component={() => <Container text>{tr}</Container>} />
+          <Route
+            exact
+            path="/texts/:id/words"
+            component={() => (
+              <WordListPage fetchWords={() => this.props.fetchTextWords(this.props.match.params.id)} />
+            )}
+          />
+        </Switch>
       </div>
     );
   }

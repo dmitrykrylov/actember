@@ -36,7 +36,7 @@ export default function words(state = initialState, action) {
       };
     case types.UPDATE_WORD_REQUEST:
       return (() => {
-        const index = state.wordList.findIndex(item => item.id === action.payload.wordId);
+        const index = state.wordList.findIndex(item => item.id === action.payload.id);
         const newList = [...state.wordList];
         newList[index].known = action.payload.known;
         return { ...state, wordList: newList };
