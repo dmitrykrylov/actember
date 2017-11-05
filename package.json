@@ -55,7 +55,6 @@
     "redux-form": "^7.0.4",
     "redux-logger": "^2.8.2",
     "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.75.1"
   },

@@ -17,5 +17,4 @@ class WordListPage extends React.Component {
 }
 
 
-
 export default WordListPage;

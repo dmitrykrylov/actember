@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { actions } from '../ducks/auth';
 import { reduxForm } from 'redux-form';
 import { Header, Grid } from 'semantic-ui-react';
+import { actions } from '../ducks/auth';
 import LoginForm, { validate } from '../components/LoginForm';
 
 

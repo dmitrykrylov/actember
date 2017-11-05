@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../actions/auth';
+import { actions } from '../ducks/auth';
 import { reduxForm } from 'redux-form';
 import { Header, Grid } from 'semantic-ui-react';
 import RegistrationForm, { validate } from '../components/RegistrationForm';
@@ -25,4 +25,4 @@ class App extends React.Component {
 }
 
 
-export default connect(() => ({}), { login })(App);
+export default connect(() => ({}), { login: actions.login })(App);

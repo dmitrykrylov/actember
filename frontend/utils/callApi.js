@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../config';
 const getToken = state => state.auth.token;
 
 // https://github.com/redux-saga/redux-saga/issues/110
-export function* callApi({ headers, ...rest }) {
+function* callApi({ headers, ...rest }) {
   try {
     const token = yield select(getToken);
     const response = yield call(

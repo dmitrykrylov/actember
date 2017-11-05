@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Header, Popup, Menu, Container } from 'semantic-ui-react';
-import { fetchText } from '../actions/texts';
-import { fetchWord, fetchTextWords } from '../actions/words';
 import { Route, Switch } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Header, Popup, Menu, Container } from 'semantic-ui-react';
+import { actions as textActions } from '../ducks/texts';
+import { actions as wordActions } from '../ducks/words';
 import WordListPage from './WordListPage';
 
 
@@ -115,5 +115,11 @@ function mapStateToProps(state) {
   };
 }
 
+const mapDispatchToProps = {
+  fetchText: textActions.fetchText,
+  fetchWord: wordActions.fetchWord,
+  fetchTextWords: wordActions.fetchTextWords,
+};
 
-export default connect(mapStateToProps, { fetchText, fetchWord, fetchTextWords })(TextPageContainer);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextPageContainer);

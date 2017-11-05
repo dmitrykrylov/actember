@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Form, Grid, Select } from 'semantic-ui-react';
-import { fetchWordList, updateWordStatus } from '../actions/words';
+import { actions } from '../ducks/words';
 import WordList from '../components/WordList';
 
 
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, { fetchWordList, updateWordStatus })(WordListContainer);
+export default connect(mapStateToProps, { ...actions })(WordListContainer);

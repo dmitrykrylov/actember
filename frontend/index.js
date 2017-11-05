@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import callAPIMiddleware from './middlewares/callApi';
 import rootReducer from './ducks';
 import App from './containers/App';
 import rootSaga from './sagas';
@@ -32,7 +30,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk, sagaMiddleware, callAPIMiddleware, routerMiddleware(history))),
+  composeEnhancers(applyMiddleware(sagaMiddleware, routerMiddleware(history))),
 );
 
 store.sagaTask = sagaMiddleware.run(rootSaga);

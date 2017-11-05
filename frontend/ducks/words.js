@@ -1,4 +1,20 @@
-import * as actionTypes from '../constants/ActionTypes';
+export const types = {
+  FETCH_WORD_REQUEST: 'FETCH_WORD_REQUEST',
+  FETCH_WORD_SUCCESS: 'FETCH_WORD_SUCCESS',
+  FETCH_WORD_FAILURE: 'FETCH_WORD_FAILURE',
+
+  FETCH_WORD_LIST_REQUEST: 'FETCH_WORD_LIST_REQUEST',
+  FETCH_WORD_LIST_SUCCESS: 'FETCH_WORD_LIST_SUCCESS',
+  FETCH_WORD_LIST_FAILURE: 'FETCH_WORD_LIST_FAILURE',
+
+  UPDATE_WORD_REQUEST: 'UPDATE_WORD_REQUEST',
+  UPDATE_WORD_SUCCESS: 'UPDATE_WORD_SUCCESS',
+  UPDATE_WORD_FAILURE: 'UPDATE_WORD_FAILURE',
+
+  FETCH_TEXT_WORD_LIST_REQUEST: 'FETCH_TEXT_WORD_LIST_REQUEST',
+  FETCH_TEXT_WORD_LIST_SUCCESS: 'FETCH_TEXT_WORD_LIST_SUCCESS',
+  FETCH_TEXT_WORD_LIST_FAILURE: 'FETCH_TEXT_WORD_LIST_FAILURE',
+};
 
 
 const initialState = {
@@ -9,16 +25,16 @@ const initialState = {
 
 export default function words(state = initialState, action) {
   switch (action.type) {
-    case `${actionTypes.FETCH_WORD_LIST}_SUCCESS`:
-      return { ...state, wordList: action.response.results };
-    case `${actionTypes.FETCH_TEXT_WORD_LIST}_SUCCESS`:
-      return { ...state, wordList: action.response.results };
-    case `${actionTypes.FETCH_WORD}_SUCCESS`:
+    case types.FETCH_WORD_LIST_SUCCESS:
+      return { ...state, wordList: action.payload.results };
+    case types.FETCH_TEXT_WORD_LIST_SUCCESS:
+      return { ...state, wordList: action.payload.results };
+    case types.FETCH_WORD_SUCCESS:
       return {
         ...state,
-        cachedWords: { ...state.cachedWords, [action.response.id]: action.response },
+        cachedWords: { ...state.cachedWords, [action.payload.id]: action.payload },
       };
-    case `${actionTypes.UPDATE_WORD}_REQUEST`:
+    case types.UPDATE_WORD_REQUEST:
       return (() => {
         const index = state.wordList.findIndex(item => item.id === action.payload.wordId);
         const newList = [...state.wordList];
@@ -26,8 +42,14 @@ export default function words(state = initialState, action) {
         return { ...state, wordList: newList };
       })();
     default:
-      return {
-        ...state,
-      };
+      return { ...state };
   }
 }
+
+
+export const actions = {
+  fetchWordList: payload => ({ type: types.FETCH_WORD_LIST_REQUEST, payload }),
+  fetchWord: payload => ({ type: types.FETCH_WORD_REQUEST, payload }),
+  updateWordStatus: payload => ({ type: types.UPDATE_WORD_REQUEST, payload }),
+  fetchTextWords: payload => ({ type: types.FETCH_TEXT_WORD_LIST_REQUEST, payload }),
+};

@@ -10,7 +10,7 @@ import WordListPage from './WordListPage';
 import TextPage from './TextPage';
 import LoginPage from './LoginPage';
 import RegistrationPage from './RegistrationPage';
-import { logout } from '../actions/auth';
+import { actions } from '../ducks/auth';
 import '../styles/main.scss';
 
 
@@ -87,14 +87,11 @@ App.propTypes = {
 
 
 function mapStateToProps(state) {
-  const { auth } = state;
-  const { token } = auth;
-
   return {
-    isAuthenticated: !!token,
+    isAuthenticated: !!state.auth.token,
   };
 }
 
 
-export default connect(mapStateToProps, { logout })(App);
+export default connect(mapStateToProps, { logout: actions.logout })(App);
 

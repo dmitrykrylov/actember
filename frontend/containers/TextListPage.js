@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchTextList } from '../actions/texts';
 import { Table, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { actions } from '../ducks/texts';
 
 
 class TextListPageContainer extends React.Component {
@@ -48,5 +48,9 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = {
+  fetchTextList: actions.fetchTextList,
+};
 
-export default connect(mapStateToProps, { fetchTextList })(TextListPageContainer);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextListPageContainer);

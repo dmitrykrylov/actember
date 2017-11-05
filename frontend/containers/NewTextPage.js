@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Header } from 'semantic-ui-react';
-import { addText } from '../actions/texts';
 import { reduxForm } from 'redux-form';
+import { actions } from '../ducks/texts';
 import NewTextForm, { validate } from '../components/NewTextForm';
 
 
@@ -31,4 +31,8 @@ NewTextPageContainer.propTypes = {
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addText })(NewTextPageContainer);
+const mapDispatchToProps = {
+  addText: actions.addText,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTextPageContainer);
