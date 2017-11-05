@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_filters',
     'corsheaders',
+    'webpack_loader',
     'texts',
     'words',
 ]
@@ -173,6 +174,17 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+}
+
+# Webpack
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': '/',  # on DEBUG should be False
+        'CACHE': True,  # on DEBUG should be False
+        'STATS_FILE': os.path.join(BASE_DIR, '..', 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    },
 }
 
 APPEND_SLASH = True

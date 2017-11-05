@@ -1,19 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const entry = process.env.NODE_ENV === 'development' ?
-  [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './frontend/index.js',
-  ] :
-  [
-    './frontend/index.js',
-  ];
 
-const config = {
-  entry,
+module.exports = {
+  entry: [
+    // defined in local or prod
+  ],
   output: {
     filename: 'bundle.js',
     path: path.resolve('frontend/dist'),
@@ -53,7 +45,6 @@ const config = {
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
@@ -71,5 +62,3 @@ const config = {
   },
 };
 
-
-module.exports = config;
