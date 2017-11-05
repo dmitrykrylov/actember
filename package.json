@@ -12,6 +12,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "8.5.0"
+  },
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.1",
