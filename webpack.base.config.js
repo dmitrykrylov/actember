@@ -43,7 +43,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
@@ -51,12 +50,5 @@ module.exports = {
       },
     }),
   ],
-  devServer: {
-    hot: true,
-    contentBase: path.resolve(__dirname, 'frontend'),  // New
-    historyApiFallback: true,
-    publicPath: '/',
-    port: 3000,
-  },
 };
 

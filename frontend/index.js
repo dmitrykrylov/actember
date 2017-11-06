@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware, routerMiddleware(history))),
+  composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware)),
 );
 
 store.sagaTask = sagaMiddleware.run(rootSaga);

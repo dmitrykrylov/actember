@@ -95,5 +95,5 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { logout: actions.logout })(App);
+export default withRouter(connect(mapStateToProps, { logout: actions.logout })(App));
 

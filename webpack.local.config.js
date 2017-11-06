@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const baseConfig = require('./webpack.base.config');
+const path = require('path');
 
 
 baseConfig.entry = [
@@ -9,13 +10,23 @@ baseConfig.entry = [
   './frontend/index.js',
 ];
 
-baseConfig.entry = {
+baseConfig.output = {
   filename: 'bundle.js',
-  path: path.resolve('frontend/dist'),
-  publicPath: '/',
-}
+  path: path.resolve('./frontend/dist/'),
+  publicPath: '',
+};
 
+baseConfig.plugins.unshift(new webpack.NamedModulesPlugin());
 baseConfig.plugins.unshift(new webpack.HotModuleReplacementPlugin());
+
+
+baseConfig.devServer = {
+  hot: true,
+  contentBase: path.resolve(__dirname, 'frontend'),
+  historyApiFallback: true,
+  publicPath: '/',
+  port: 3000,
+};
 
 
 module.exports = baseConfig;
