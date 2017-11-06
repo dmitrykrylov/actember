@@ -179,7 +179,7 @@ JWT_AUTH = {
 # Webpack
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': '/',  # on DEBUG should be False
+        'BUNDLE_DIR_NAME': '',
         'CACHE': True,  # on DEBUG should be False
         'STATS_FILE': os.path.join(BASE_DIR, '..', 'webpack-stats.json'),
         'POLL_INTERVAL': 0.1,

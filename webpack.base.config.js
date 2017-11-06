@@ -7,9 +7,7 @@ module.exports = {
     // defined in local or prod
   ],
   output: {
-    filename: 'bundle.js',
-    path: path.resolve('frontend/dist'),
-    publicPath: '/',
+    // defined in local or prod
   },
   module: {
     loaders: [

@@ -9,6 +9,12 @@ baseConfig.entry = [
   './frontend/index.js',
 ];
 
+baseConfig.entry = {
+  filename: 'bundle.js',
+  path: path.resolve('frontend/dist'),
+  publicPath: '/',
+}
+
 baseConfig.plugins.unshift(new webpack.HotModuleReplacementPlugin());
 
 
