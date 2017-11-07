@@ -12,7 +12,7 @@ class WordListContainer extends React.Component {
     this.handleFilterChange = this.handleFilterChange.bind(this);
 
     this.state = {
-      filter: null,
+      known: null,
       sort: null,
     };
   }
@@ -26,8 +26,8 @@ class WordListContainer extends React.Component {
   }
 
   handleFilterChange(event, a) {
-    this.setState({ filter: a.value });
-    this.props.fetchWords ? this.props.fetchWords({ filter: a.value }) : this.props.fetchWordList({ filter: a.value });
+    this.setState({ known: a.value });
+    this.props.fetchWords ? this.props.fetchWords({ known: a.value }) : this.props.fetchWordList({ known: a.value });
   }
 
   render() {
@@ -40,14 +40,14 @@ class WordListContainer extends React.Component {
         <Grid.Column width={4}>
           <Form>
             <Form.Field>
-              <label>Show</label>
+              <label>Status</label>
               <Select
                 defaultValue="null"
                 onChange={this.handleFilterChange}
                 options={[
                   { text: 'All', value: 'null' },
-                  { text: 'Unknown', value: '-known' },
-                  { text: 'Known', value: 'known' },
+                  { text: 'Unknown', value: 'false' },
+                  { text: 'Known', value: 'true' },
                 ]}
               >
               </Select>
