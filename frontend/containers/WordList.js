@@ -10,10 +10,11 @@ class WordListContainer extends React.Component {
     super(props);
     this.handleStatusChange = this.handleStatusChange.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleOrderingChange = this.handleOrderingChange.bind(this);
 
     this.state = {
       known: null,
-      sort: null,
+      ordering: null,
     };
   }
 
@@ -28,6 +29,11 @@ class WordListContainer extends React.Component {
   handleFilterChange(event, a) {
     this.setState({ known: a.value });
     this.props.fetchWords ? this.props.fetchWords({ known: a.value }) : this.props.fetchWordList({ known: a.value });
+  }
+
+  handleOrderingChange(event, a) {
+    this.setState({ ordering: a.value });
+    this.props.fetchWords ? this.props.fetchWords({ ordering: a.value }) : this.props.fetchWordList({ ordering: a.value });
   }
 
   render() {
@@ -45,7 +51,7 @@ class WordListContainer extends React.Component {
                 defaultValue="null"
                 onChange={this.handleFilterChange}
                 options={[
-                  { text: 'All', value: 'null' },
+                  { text: 'All', value: undefined },
                   { text: 'Unknown', value: 'false' },
                   { text: 'Known', value: 'true' },
                 ]}
@@ -56,8 +62,10 @@ class WordListContainer extends React.Component {
               <label>Sort By</label>
               <Select
                 defaultValue="null"
+                onChange={this.handleOrderingChange}
                 options={[
-                  { text: 'Alphabet', value: 'null' },
+                  { text: 'Alphabet A > Z', value: 'word__lemma' },
+                  { text: 'Alphabet A < Z', value: '-word__lemma' },
                 ]}
               >
               </Select>

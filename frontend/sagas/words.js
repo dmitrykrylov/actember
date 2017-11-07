@@ -25,7 +25,8 @@ export function* fetchWord({ payload }) {
 
 export function* updateWordStatus({ payload }) {
   try {
-    const response = yield callApi({ url: `/api/user/words/${payload.id}/` });
+    const { id, known } = payload;
+    const response = yield callApi({ method: 'put', url: `/api/user/words/${id}/`, data: { known } });
     yield put({ method: 'put', type: types.UPDATE_WORD_SUCCESS, payload: response.data });
   } catch (error) {
     yield put({ type: types.UPDATE_WORD_FAILURE, error });
