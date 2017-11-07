@@ -50,7 +50,7 @@
     "proptypes": "^1.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-hot-loader": "^3.0.0-beta.6",
+    "react-hot-loader": "^3.1.1",
     "react-icheck": "^0.3.8",
     "react-redux": "^5.0.3",
     "react-router": "^4.1.2",
@@ -61,7 +61,7 @@
     "redux-logger": "^2.8.2",
     "redux-saga": "^0.16.0",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.75.1"
+    "semantic-ui-react": "^0.76.0"
   },
   "repository": "git@github.com:dmitrykrylov/actember.git"
 }

@@ -29,16 +29,16 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 
 const Nav = withRouter(({ history, logout }) => (
-  <Menu secondary inverted borderless size="large" color="violet">
+  <Menu secondary inverted borderless size="large" color="violet" stackable>
     <Container>
       <Menu.Menu position="right">
-        <Menu.Item name="texts" onClick={() => history.push("/texts")}>
+        <Menu.Item name="texts" onClick={() => history.push('/texts')}>
           Texts
         </Menu.Item>
-        <Menu.Item name="texts-new" onClick={() => history.push("/texts/new")}>
+        <Menu.Item name="texts-new" onClick={() => history.push('/texts/new')}>
            New Text
         </Menu.Item>
-        <Menu.Item name="words" onClick={() => history.push("/words")}>
+        <Menu.Item name="words" onClick={() => history.push('/words')}>
           Words
         </Menu.Item>
         <Menu.Item name="login" onClick={logout}>
@@ -63,7 +63,7 @@ class App extends React.Component {
             path="/"
             component={(() => (
               <div>
-                <Responsive as={Nav} logout={logout} />
+                <Nav logout={logout} />
                 <Container>
                   <Switch>
                     <Route exact path="/" component={TextListPage} />

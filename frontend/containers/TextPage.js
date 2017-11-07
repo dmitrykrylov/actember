@@ -24,7 +24,7 @@ class TextPageContainer extends React.Component {
 
   handlePopupOpen(e, wordId) {
     if (!this.props.cachedWords[wordId]) {
-      this.props.fetchWord(wordId);
+      this.props.fetchWord({ id: wordId });
     }
   }
 
