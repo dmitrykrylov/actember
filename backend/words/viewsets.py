@@ -14,7 +14,7 @@ class UserWordViewSet(viewsets.ModelViewSet):
     serializer_class = UserWordSerializer
     filter_fields = ('known',)
     ordering_fields = ('word__lemma',)
-    filter_backends = (filters.OrderingFilter,)
+    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
 
     def get_queryset(self):
         return UserWord.objects.filter(user=self.request.user)
