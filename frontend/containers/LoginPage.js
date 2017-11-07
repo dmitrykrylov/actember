@@ -4,6 +4,7 @@ import { reduxForm } from 'redux-form';
 import { Header, Grid } from 'semantic-ui-react';
 import { actions } from '../ducks/auth';
 import LoginForm, { validate } from '../components/LoginForm';
+import { withRouter } from 'react-router-dom';
 
 
 const Form = reduxForm({ form: 'login', validate })(LoginForm);
@@ -23,4 +24,4 @@ class App extends React.Component {
 }
 
 
-export default connect(() => ({}), { ...actions })(App);
+export default withRouter(connect(() => ({}), { ...actions })(App));
