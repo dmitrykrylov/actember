@@ -51,7 +51,7 @@ class WordListContainer extends React.Component {
                 defaultValue="null"
                 onChange={this.handleFilterChange}
                 options={[
-                  { text: 'All', value: undefined },
+                  { text: 'All', value: "null" },
                   { text: 'Unknown', value: 'false' },
                   { text: 'Known', value: 'true' },
                 ]}
@@ -61,8 +61,8 @@ class WordListContainer extends React.Component {
             <Form.Field>
               <label>Sort By</label>
               <Select
-                defaultValue="null"
                 onChange={this.handleOrderingChange}
+                placeholder="Choose ordering"
                 options={[
                   { text: 'Alphabet A > Z', value: 'word__lemma' },
                   { text: 'Alphabet A < Z', value: '-word__lemma' },

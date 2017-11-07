@@ -10,7 +10,7 @@ class WordListPage extends React.Component {
     return (
       <div>
         <Header as="h2">Words</Header>
-        <WordList/>
+        <WordList />
       </div>
     );
   }

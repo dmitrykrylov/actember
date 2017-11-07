@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Table, Header } from 'semantic-ui-react';
+import { Table, Header, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { actions } from '../ducks/texts';
 
@@ -21,7 +21,7 @@ class TextListPageContainer extends React.Component {
     ));
 
     return (
-      <div>
+      <Container text>
         <Header as="h2">Texts</Header>
         <Table className="columns">
           <Table.Header>
@@ -34,7 +34,7 @@ class TextListPageContainer extends React.Component {
             {texts}
           </Table.Body>
         </Table>
-      </div>
+      </Container>
     );
   }
 }
