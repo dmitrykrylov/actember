@@ -10,7 +10,7 @@ import { withRouter } from 'react-router-dom';
 const Form = reduxForm({ form: 'login', validate })(LoginForm);
 
 
-class App extends React.Component {
+class LoginPage extends React.Component {
   render() {
     return (
       <Grid verticalAlign="middle" centered style={{ height: '100%' }}>
@@ -24,4 +24,4 @@ class App extends React.Component {
 }
 
 
-export default withRouter(connect(() => ({}), { ...actions })(App));
+export default withRouter(connect(() => ({}), { ...actions })(LoginPage));

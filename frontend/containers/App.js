@@ -55,29 +55,27 @@ class App extends React.Component {
     const { logout } = this.props;
 
     return (
-      <div>
-        <Switch>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegistrationPage} />
-          <PrivateRoute
-            path="/"
-            component={(() => (
-              <div>
-                <Nav logout={logout} />
-                <Container>
-                  <Switch>
-                    <Route exact path="/" component={TextListPage} />
-                    <Route exact path="/texts" component={TextListPage} />
-                    <Route exact path="/texts/new" component={NewTextPage} />
-                    <Route path="/texts/:id" component={TextPage} />
-                    <Route exact path="/words" component={WordListPage} />
-                  </Switch>
-                </Container>
-              </div>
-            ))}
-          />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegistrationPage} />
+        <PrivateRoute
+          path="/"
+          component={(() => (
+            <div>
+              <Nav logout={logout} />
+              <Container>
+                <Switch>
+                  <Route exact path="/" component={TextListPage} />
+                  <Route exact path="/texts" component={TextListPage} />
+                  <Route exact path="/texts/new" component={NewTextPage} />
+                  <Route path="/texts/:id" component={TextPage} />
+                  <Route exact path="/words" component={WordListPage} />
+                </Switch>
+              </Container>
+            </div>
+          ))}
+        />
+      </Switch>
     );
   }
 }
