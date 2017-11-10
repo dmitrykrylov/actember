@@ -31,3 +31,14 @@ export function* fetchTextList({ payload }) {
     yield put({ type: types.FETCH_TEXT_LIST_FAILURE, error });
   }
 }
+
+
+export function* fetchTextWordList({ payload }) {
+  try {
+    const { id, ...params } = payload;
+    const response = yield callApi({ url: `/api/texts/${id}/words/`, params });
+    yield put({ type: types.FETCH_TEXT_WORD_LIST_SUCCESS, payload: response.data });
+  } catch (error) {
+    yield put({ type: types.FETCH_TEXT_WORD_LIST_FAILURE, error });
+  }
+}

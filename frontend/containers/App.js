@@ -1,9 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router';
-import { Responsive, Menu, Container } from 'semantic-ui-react';
+import { Menu, Container } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
-
 import TextListPage from './TextListPage';
 import NewTextPage from './NewTextPage';
 import WordListPage from './WordListPage';
@@ -15,7 +14,6 @@ import '../styles/main.scss';
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  console.log(window.localStorage.getItem('token'))
   return (
     <Route
       {...rest}

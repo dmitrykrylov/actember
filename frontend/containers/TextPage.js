@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 import { Header, Popup, Menu, Container } from 'semantic-ui-react';
 import { actions as textActions } from '../ducks/texts';
 import { actions as wordActions } from '../ducks/words';
-import WordListPage from './WordListPage';
+import TextWordListPage from './TextWordListPage';
 
 
-class TextPageContainer extends React.Component {
+class TertWordListPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -90,7 +90,7 @@ class TextPageContainer extends React.Component {
             exact
             path="/texts/:id/words"
             component={() => (
-              <WordListPage fetchWords={() => this.props.fetchTextWords(this.props.match.params.id)} />
+              <TextWordListPage />
             )}
           />
         </Switch>
@@ -100,7 +100,7 @@ class TextPageContainer extends React.Component {
 }
 
 
-TextPageContainer.propTypes = {
+TertWordListPage.propTypes = {
   fetchText: PropTypes.func,
   cachedWords: PropTypes.object,
   match: PropTypes.object,
@@ -122,8 +122,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   fetchText: textActions.fetchText,
   fetchWord: wordActions.fetchWord,
-  fetchTextWords: wordActions.fetchTextWords,
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(TextPageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TertWordListPage);

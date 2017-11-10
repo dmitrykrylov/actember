@@ -17,6 +17,7 @@ class TextViewSet(viewsets.ModelViewSet):
     @detail_route()
     def words(self, request, pk):
         print(request)
+        print('AAAAAA')
         queryset = TextWord.objects.filter(text=pk)
         queryset = filters.OrderingFilter().filter_queryset(request, queryset, self)
         page = self.paginate_queryset(queryset)

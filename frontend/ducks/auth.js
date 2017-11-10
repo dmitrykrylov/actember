@@ -15,7 +15,6 @@ export const initialState = {
 
 
 export default function auth(state = initialState, { type, payload }) {
-  console.log({ type, payload });
   switch (type) {
     case types.LOGIN_SUCCESS:
       return { ...state, token: payload.token };

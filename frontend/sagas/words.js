@@ -33,12 +33,3 @@ export function* updateWordStatus({ payload }) {
   }
 }
 
-
-export function* fetchTextWords({ payload }) {
-  try {
-    const response = yield callApi({ url: `/api/texts/${payload.id}/words`, params: payload });
-    yield put({ type: types.FETCH_TEXT_WORD_LIST_SUCCESS, payload: response.data });
-  } catch (error) {
-    yield put({ type: types.FETCH_TEXT_WORD_LIST_FAILURE, error });
-  }
-}

@@ -187,4 +187,4 @@ WEBPACK_LOADER = {
     },
 }
 
-APPEND_SLASH = True
+# APPEND_SLASH = True
