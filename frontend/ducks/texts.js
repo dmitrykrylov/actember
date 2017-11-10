@@ -17,6 +17,10 @@ export const types = {
   FETCH_TEXT_WORD_LIST_REQUEST: 'FETCH_TEXT_WORD_LIST_REQUEST',
   FETCH_TEXT_WORD_LIST_SUCCESS: 'FETCH_TEXT_WORD_LIST_SUCCESS',
   FETCH_TEXT_WORD_LIST_FAILURE: 'FETCH_TEXT_WORD_LIST_FAILURE',
+
+  DELETE_TEXT_REQUEST: 'DELETE_TEXT_REQUEST',
+  DELETE_TEXT_SUCCESS: 'DELETE_TEXT_SUCCESS',
+  DELETE_TEXT_FAILURE: 'DELETE_TEXT_FAILURE',
 };
 
 
@@ -53,4 +57,5 @@ export const actions = {
   fetchText: payload => ({ type: types.FETCH_TEXT_REQUEST, payload }),
   fetchTextList: payload => ({ type: types.FETCH_TEXT_LIST_REQUEST, payload }),
   fetchTextWordList: payload => ({ type: types.FETCH_TEXT_WORD_LIST_REQUEST, payload }),
+  deleteText: payload => ({ type: types.DELETE_TEXT_REQUEST, payload }),
 };

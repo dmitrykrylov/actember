@@ -1,6 +1,7 @@
 import { put } from 'redux-saga/effects';
 import callApi from '../utils/callApi';
 import { types } from '../ducks/texts';
+import { push } from 'react-router-redux';
 
 
 export function* addText({ payload }) {
@@ -38,6 +39,17 @@ export function* fetchTextWordList({ payload }) {
     const { id, ...params } = payload;
     const response = yield callApi({ url: `/api/texts/${id}/words/`, params });
     yield put({ type: types.FETCH_TEXT_WORD_LIST_SUCCESS, payload: response.data });
+  } catch (error) {
+    yield put({ type: types.FETCH_TEXT_WORD_LIST_FAILURE, error });
+  }
+}
+
+
+export function* deleteText({ payload }) {
+  try {
+    const response = yield callApi({ method: 'delete', url: `/api/texts/${payload}/` });
+    yield put({ type: types.FETCH_TEXT_WORD_LIST_SUCCESS, payload: response.data });
+    yield put(push('/texts'));
   } catch (error) {
     yield put({ type: types.FETCH_TEXT_WORD_LIST_FAILURE, error });
   }

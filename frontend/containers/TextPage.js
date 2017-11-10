@@ -75,14 +75,16 @@ class TertWordListPage extends React.Component {
               icon="student"
             />
           </Link>
-            <Menu.Item
-              name="Delete Text"
-              onClick={() => confirm('Are you sure?')}
-              position="right"
-              color="red"
-              icon="delete"
-              active
-            />
+          <Menu.Item
+            name="Delete Text"
+            onClick={() => {
+              if (window.confirm('Are you sure?')) { this.props.deleteText(match.params.id); }
+            }}
+            position="right"
+            color="red"
+            icon="delete"
+            active
+          />
         </Menu>
         <Switch>
           <Route exact path="/texts/:id" component={() => <Container text>{tr}</Container>} />
@@ -102,6 +104,7 @@ class TertWordListPage extends React.Component {
 
 TertWordListPage.propTypes = {
   fetchText: PropTypes.func,
+  deleteText: PropTypes.func,
   cachedWords: PropTypes.object,
   match: PropTypes.object,
 };
@@ -121,6 +124,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   fetchText: textActions.fetchText,
+  deleteText: textActions.deleteText,
   fetchWord: wordActions.fetchWord,
 };
 
