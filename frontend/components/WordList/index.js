@@ -15,6 +15,7 @@ const WordList = (props) => {
           increaseArea="20%"
         />
       </Table.Cell>
+      {props.fromText && <Table.Cell textAlign="center">{item.count}</Table.Cell>}
       <Table.Cell><strong>{item.word && item.word.lemma}</strong></Table.Cell>
       <Table.Cell>{item.word && item.word.description}</Table.Cell>
       {props.hasTextData && <Table.Cell textAlign="center">{item.count}</Table.Cell>}
@@ -26,6 +27,7 @@ const WordList = (props) => {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell textAlign="center">Known</Table.HeaderCell>
+          {props.fromText && <Table.HeaderCell textAlign="center">Count</Table.HeaderCell>}
           <Table.HeaderCell>Word</Table.HeaderCell>
           <Table.HeaderCell>Description</Table.HeaderCell>
           {props.hasTextData && <Table.HeaderCell>Count</Table.HeaderCell>}

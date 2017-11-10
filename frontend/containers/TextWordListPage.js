@@ -42,7 +42,7 @@ class WordListContainer extends React.Component {
     return (
       <Grid centered reversed="mobile vertically">
         <Grid.Column width={12}>
-          <WordList items={this.props.wordList} onStatusChange={this.handleStatusChange} />
+          <WordList fromText items={this.props.wordList} onStatusChange={this.handleStatusChange} />
         </Grid.Column>
         <Grid.Column width={4}>
           <Form>
