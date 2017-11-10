@@ -11,6 +11,7 @@ import LoginPage from './LoginPage';
 import RegistrationPage from './RegistrationPage';
 import { actions } from '../ducks/auth';
 import '../styles/main.scss';
+import logo from '../logo.png';
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -29,6 +30,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const Nav = withRouter(({ history, logout }) => (
   <Menu secondary inverted borderless size="large" color="violet" stackable>
     <Container>
+      <img src={logo} style={{ height: 36, marginTop: 2 }} />
       <Menu.Menu position="right">
         <Menu.Item name="texts" onClick={() => history.push('/texts')}>
           Texts
