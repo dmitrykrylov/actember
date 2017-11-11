@@ -9,15 +9,16 @@ export default props => (
     <Form onSubmit={props.handleSubmit}>
       <Field
         name="username"
-        label="Email"
+        label="Username"
         component={ReduxFormField}
-        placeholder="Email"
+        placeholder="Username"
       />
       <Field
         name="password"
         label="Password"
         component={ReduxFormField}
         placeholder="Password"
+        type="password"
       />
       <Button type="submit" primary disabled={props.invalid || props.pristine}>Login</Button>
     </Form>
