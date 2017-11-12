@@ -34,26 +34,28 @@ class TertWordListPage extends React.Component {
 
     if (!text.processed) { return <div />; }
 
-    const tr = text.processed.strings.map((item, i) => {
-      if (item.s === String.fromCharCode(10)) {
-        return <br key={i} />
-      } else if (item.id) {
-        const string = <strong>{item.s}</strong>;
-        const isWordFetched = cachedWords[item.id] !== undefined;
+    const tr = text.processed.strings ?
+      text.processed.strings.map((item, i) => {
+        if (item.s === String.fromCharCode(10)) {
+          return <br key={i} />
+        } else if (item.id) {
+          const string = <strong>{item.s}</strong>;
+          const isWordFetched = cachedWords[item.id] !== undefined;
 
-        return (
-          <Popup
-            key={i}
-            trigger={string}
-            position='bottom center'
-            header={item.s}
-            content={isWordFetched && cachedWords[item.id].description}
-            onOpen={(e) => this.handlePopupOpen(e, item.id)}
-          />
-        );
-      }
-      return <span key={i}>{item.s}</span>;
-    });
+          return (
+            <Popup
+              key={i}
+              trigger={string}
+              position='bottom center'
+              header={item.s}
+              content={isWordFetched && cachedWords[item.id].description}
+              onOpen={(e) => this.handlePopupOpen(e, item.id)}
+            />
+          );
+        }
+        return <span key={i}>{item.s}</span>;
+      }) :
+      'Text has not been processed';
 
     return (
       <div>
