@@ -22,12 +22,14 @@ from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 from texts.viewsets import TextViewSet
 from words.viewsets import WordViewSet, UserWordViewSet
+from users.viewsets import UserViewSet
 
 
 router = DefaultRouter()
 router.register(r'texts', TextViewSet)
 router.register(r'user/words', UserWordViewSet)
 router.register(r'words', WordViewSet)
+router.register(r'users', UserViewSet)
 
 
 urlpatterns = [
