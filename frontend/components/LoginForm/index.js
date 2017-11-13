@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Segment } from 'semantic-ui-react';
+import { Button, Form, Segment, Divider } from 'semantic-ui-react';
 import { Field } from 'redux-form';
 import ReduxFormField from '../ReduxFormField';
 
@@ -21,6 +21,16 @@ export default props => (
         type="password"
       />
       <Button type="submit" primary disabled={props.invalid || props.pristine}>Login</Button>
+      <Divider />
+      <div style={{ textAlign: 'center' }}>or</div>
+      <Divider />
+      <Button
+        style={{ margin: 'auto' }}
+        content="Sign in via VK"
+        icon="vk"
+        primary
+        onClick={() => {}}
+      />
     </Form>
   </Segment>
 );
