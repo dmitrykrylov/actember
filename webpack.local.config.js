@@ -13,7 +13,7 @@ baseConfig.entry = [
 baseConfig.output = {
   filename: 'bundle.js',
   path: path.resolve('./frontend/dist/'),
-  publicPath: '',
+  publicPath: '/',
 };
 
 baseConfig.plugins.unshift(new webpack.NamedModulesPlugin());

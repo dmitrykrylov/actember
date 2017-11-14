@@ -19,26 +19,19 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-        include: /node_modules/,
+        // include: /node_modules/,
       },
       {
         test: /\.(scss)$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            query: {
-              optipng: {
-                optimizationLevel: 4,
-              },
-            },
-          },
-        ],
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+      }, {
+        test: /\.(jpg|png|gif)$/,
+        loader: 'file-loader',
       },
     ],
   },
