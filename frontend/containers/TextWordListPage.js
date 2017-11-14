@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Grid, Select } from 'semantic-ui-react';
 import { actions as wordActions } from '../ducks/words';
-import { actions as textActions } from '../ducks/texts';
 import WordList from '../components/WordList';
 import { withRouter } from 'react-router-dom';
 
@@ -80,13 +79,13 @@ class WordListContainer extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  const { wordList } = state.texts;
+  const { wordList } = state.words;
   return { wordList };
 };
 
 const mapDispatchToProps = {
   updateWordStatus: wordActions.updateWordStatus,
-  fetchWordList: textActions.fetchTextWordList,
+  fetchWordList: wordActions.fetchTextWordList,
 };
 
 

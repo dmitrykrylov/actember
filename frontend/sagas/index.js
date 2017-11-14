@@ -16,9 +16,9 @@ export default function* rootSaga() {
     takeEvery(textTypes.ADD_TEXT_REQUEST, textSagas.addText),
     takeEvery(textTypes.FETCH_TEXT_REQUEST, textSagas.fetchText),
     takeEvery(textTypes.FETCH_TEXT_LIST_REQUEST, textSagas.fetchTextList),
-    takeEvery(textTypes.FETCH_TEXT_WORD_LIST_REQUEST, textSagas.fetchTextWordList),
     takeEvery(textTypes.DELETE_TEXT_REQUEST, textSagas.deleteText),
     // words
+    takeEvery(wordTypes.FETCH_TEXT_WORD_LIST_REQUEST, wordSagas.fetchTextWordList),
     takeEvery(wordTypes.FETCH_WORD_LIST_REQUEST, wordSagas.fetchWordList),
     takeEvery(wordTypes.FETCH_WORD_REQUEST, wordSagas.fetchWord),
     takeEvery(wordTypes.UPDATE_WORD_REQUEST, wordSagas.updateWordStatus),
