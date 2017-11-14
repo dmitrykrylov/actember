@@ -21,12 +21,13 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 from texts.viewsets import TextViewSet
-from words.viewsets import WordViewSet, UserWordViewSet
+from words.viewsets import WordViewSet, UserWordViewSet, TextWordViewSet
 from users.viewsets import UserViewSet
 
 
 router = DefaultRouter()
 router.register(r'texts', TextViewSet)
+router.register(r'texts/(?P<text_pk>\d+)/words', TextWordViewSet)
 router.register(r'user/words', UserWordViewSet)
 router.register(r'words', WordViewSet)
 router.register(r'users', UserViewSet)
